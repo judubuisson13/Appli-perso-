@@ -1,0 +1,908 @@
+{
+  "id": "kitchen",
+  "version": 1,
+  "catalog": [
+    {
+      "id": "riz",
+      "name": "riz",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "pates",
+      "name": "pâtes",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "lentilles-corail",
+      "name": "lentilles corail",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "pois-chiches",
+      "name": "pois chiches (bocal)",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "lait-coco",
+      "name": "lait de coco",
+      "aisle": "Épicerie",
+      "unit": "ml"
+    },
+    {
+      "id": "tomates-concassees",
+      "name": "tomates concassées",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "farine",
+      "name": "farine",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "flocons-avoine",
+      "name": "flocons d’avoine",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "huile-olive",
+      "name": "huile d’olive",
+      "aisle": "Épicerie",
+      "unit": "c. à s.",
+      "staple": true
+    },
+    {
+      "id": "sel",
+      "name": "sel",
+      "aisle": "Épicerie",
+      "unit": "pincée",
+      "staple": true
+    },
+    {
+      "id": "poivre",
+      "name": "poivre",
+      "aisle": "Épicerie",
+      "unit": "pincée",
+      "staple": true
+    },
+    {
+      "id": "curry",
+      "name": "curry",
+      "aisle": "Épicerie",
+      "unit": "c. à c.",
+      "staple": true
+    },
+    {
+      "id": "cumin",
+      "name": "cumin",
+      "aisle": "Épicerie",
+      "unit": "c. à c.",
+      "staple": true
+    },
+    {
+      "id": "bouillon",
+      "name": "cube de bouillon",
+      "aisle": "Épicerie",
+      "unit": "pièce",
+      "staple": true
+    },
+    {
+      "id": "oeuf",
+      "name": "œufs",
+      "aisle": "Frais",
+      "unit": "pièce"
+    },
+    {
+      "id": "lait",
+      "name": "lait",
+      "aisle": "Frais",
+      "unit": "ml"
+    },
+    {
+      "id": "yaourt-nature",
+      "name": "yaourt nature",
+      "aisle": "Frais",
+      "unit": "pièce"
+    },
+    {
+      "id": "emmental",
+      "name": "emmental râpé",
+      "aisle": "Frais",
+      "unit": "g"
+    },
+    {
+      "id": "feta",
+      "name": "feta",
+      "aisle": "Frais",
+      "unit": "g"
+    },
+    {
+      "id": "beurre",
+      "name": "beurre",
+      "aisle": "Frais",
+      "unit": "g",
+      "staple": true
+    },
+    {
+      "id": "creme",
+      "name": "crème fraîche",
+      "aisle": "Frais",
+      "unit": "ml"
+    },
+    {
+      "id": "poulet",
+      "name": "blanc de poulet",
+      "aisle": "Boucherie",
+      "unit": "g"
+    },
+    {
+      "id": "boeuf-hache",
+      "name": "bœuf haché",
+      "aisle": "Boucherie",
+      "unit": "g"
+    },
+    {
+      "id": "saumon",
+      "name": "pavé de saumon",
+      "aisle": "Poissonnerie",
+      "unit": "g"
+    },
+    {
+      "id": "thon",
+      "name": "thon en boîte",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "oignon",
+      "name": "oignon",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "ail",
+      "name": "ail",
+      "aisle": "Fruits et légumes",
+      "unit": "gousse"
+    },
+    {
+      "id": "carotte",
+      "name": "carotte",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "courgette",
+      "name": "courgette",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "poivron",
+      "name": "poivron",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "tomate",
+      "name": "tomate",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "pomme-de-terre",
+      "name": "pomme de terre",
+      "aisle": "Fruits et légumes",
+      "unit": "g"
+    },
+    {
+      "id": "epinards",
+      "name": "épinards",
+      "aisle": "Fruits et légumes",
+      "unit": "g"
+    },
+    {
+      "id": "brocoli",
+      "name": "brocoli",
+      "aisle": "Fruits et légumes",
+      "unit": "g"
+    },
+    {
+      "id": "banane",
+      "name": "banane",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "pomme",
+      "name": "pomme",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "citron",
+      "name": "citron",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "concombre",
+      "name": "concombre",
+      "aisle": "Fruits et légumes",
+      "unit": "pièce"
+    },
+    {
+      "id": "patate-douce",
+      "name": "patate douce",
+      "aisle": "Fruits et légumes",
+      "unit": "g"
+    },
+    {
+      "id": "champignons",
+      "name": "champignons",
+      "aisle": "Fruits et légumes",
+      "unit": "g"
+    },
+    {
+      "id": "pain",
+      "name": "pain",
+      "aisle": "Boulangerie",
+      "unit": "g"
+    },
+    {
+      "id": "tortillas",
+      "name": "tortillas",
+      "aisle": "Épicerie",
+      "unit": "pièce"
+    },
+    {
+      "id": "haricots-rouges",
+      "name": "haricots rouges (boîte)",
+      "aisle": "Épicerie",
+      "unit": "g"
+    },
+    {
+      "id": "mais",
+      "name": "maïs (boîte)",
+      "aisle": "Épicerie",
+      "unit": "g"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "dal",
+      "title": "Dal de lentilles corail au lait de coco",
+      "servings": 4,
+      "minutes": 30,
+      "kidFriendly": true,
+      "tags": [
+        "végétarien",
+        "batch"
+      ],
+      "ingredients": [
+        {
+          "ing": "lentilles-corail",
+          "qty": 300
+        },
+        {
+          "ing": "lait-coco",
+          "qty": 400
+        },
+        {
+          "ing": "tomates-concassees",
+          "qty": 400
+        },
+        {
+          "ing": "oignon",
+          "qty": 1
+        },
+        {
+          "ing": "ail",
+          "qty": 2
+        },
+        {
+          "ing": "curry",
+          "qty": 2
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        },
+        {
+          "ing": "riz",
+          "qty": 250
+        }
+      ],
+      "steps": [
+        "Émince l’oignon et l’ail, fais-les revenir 3 min dans l’huile.",
+        "Ajoute le curry, puis les lentilles rincées, les tomates et le lait de coco.",
+        "Laisse mijoter 20 min en remuant, ajoute un peu d’eau si besoin.",
+        "Sers avec le riz. Pour l’enfant : moins de curry, ou curry doux."
+      ]
+    },
+    {
+      "id": "omelette-courgette",
+      "title": "Omelette courgette et feta",
+      "servings": 2,
+      "minutes": 15,
+      "kidFriendly": true,
+      "tags": [
+        "végétarien",
+        "rapide"
+      ],
+      "ingredients": [
+        {
+          "ing": "oeuf",
+          "qty": 5
+        },
+        {
+          "ing": "courgette",
+          "qty": 1
+        },
+        {
+          "ing": "feta",
+          "qty": 80
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        },
+        {
+          "ing": "poivre",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Râpe la courgette et fais-la revenir 5 min.",
+        "Bats les œufs, ajoute la feta émiettée.",
+        "Verse sur la courgette, cuis à feu doux 5 min à couvert."
+      ]
+    },
+    {
+      "id": "poulet-legumes",
+      "title": "Poulet rôti aux légumes et pommes de terre",
+      "servings": 4,
+      "minutes": 45,
+      "kidFriendly": true,
+      "tags": [
+        "four"
+      ],
+      "ingredients": [
+        {
+          "ing": "poulet",
+          "qty": 500
+        },
+        {
+          "ing": "pomme-de-terre",
+          "qty": 600
+        },
+        {
+          "ing": "carotte",
+          "qty": 3
+        },
+        {
+          "ing": "poivron",
+          "qty": 1
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 2
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        },
+        {
+          "ing": "poivre",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Préchauffe le four à 200 °C.",
+        "Coupe pommes de terre, carottes et poivron en morceaux, mélange avec l’huile.",
+        "Enfourne 15 min, ajoute le poulet en morceaux, poursuis 20 à 25 min."
+      ]
+    },
+    {
+      "id": "pates-thon-tomate",
+      "title": "Pâtes thon-tomate",
+      "servings": 4,
+      "minutes": 20,
+      "kidFriendly": true,
+      "tags": [
+        "rapide",
+        "placard"
+      ],
+      "ingredients": [
+        {
+          "ing": "pates",
+          "qty": 400
+        },
+        {
+          "ing": "thon",
+          "qty": 280
+        },
+        {
+          "ing": "tomates-concassees",
+          "qty": 400
+        },
+        {
+          "ing": "oignon",
+          "qty": 1
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Cuis les pâtes.",
+        "Fais revenir l’oignon, ajoute tomates et thon émietté, 10 min à feu doux.",
+        "Mélange avec les pâtes."
+      ]
+    },
+    {
+      "id": "saumon-brocoli",
+      "title": "Saumon, brocoli et riz",
+      "servings": 4,
+      "minutes": 25,
+      "kidFriendly": true,
+      "tags": [
+        "poisson"
+      ],
+      "ingredients": [
+        {
+          "ing": "saumon",
+          "qty": 500
+        },
+        {
+          "ing": "brocoli",
+          "qty": 500
+        },
+        {
+          "ing": "riz",
+          "qty": 250
+        },
+        {
+          "ing": "citron",
+          "qty": 1
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Lance la cuisson du riz.",
+        "Fais cuire le brocoli à la vapeur 8 min.",
+        "Poêle le saumon 4 min de chaque côté, arrose de citron."
+      ]
+    },
+    {
+      "id": "chili-sin-carne",
+      "title": "Chili sin carne",
+      "servings": 4,
+      "minutes": 35,
+      "kidFriendly": false,
+      "tags": [
+        "végétarien",
+        "batch"
+      ],
+      "ingredients": [
+        {
+          "ing": "haricots-rouges",
+          "qty": 500
+        },
+        {
+          "ing": "mais",
+          "qty": 280
+        },
+        {
+          "ing": "tomates-concassees",
+          "qty": 400
+        },
+        {
+          "ing": "poivron",
+          "qty": 1
+        },
+        {
+          "ing": "oignon",
+          "qty": 1
+        },
+        {
+          "ing": "cumin",
+          "qty": 2
+        },
+        {
+          "ing": "riz",
+          "qty": 250
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Fais revenir oignon et poivron 5 min.",
+        "Ajoute cumin, tomates, haricots rincés et maïs.",
+        "Laisse mijoter 20 min. Sers avec le riz."
+      ]
+    },
+    {
+      "id": "soupe-carotte",
+      "title": "Velouté de carottes",
+      "servings": 4,
+      "minutes": 30,
+      "kidFriendly": true,
+      "tags": [
+        "végétarien",
+        "soupe"
+      ],
+      "ingredients": [
+        {
+          "ing": "carotte",
+          "qty": 6
+        },
+        {
+          "ing": "pomme-de-terre",
+          "qty": 300
+        },
+        {
+          "ing": "oignon",
+          "qty": 1
+        },
+        {
+          "ing": "bouillon",
+          "qty": 1
+        },
+        {
+          "ing": "creme",
+          "qty": 50
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Épluche et coupe les légumes.",
+        "Couvre d’eau avec le bouillon, cuis 20 min.",
+        "Mixe avec la crème."
+      ]
+    },
+    {
+      "id": "wraps-poulet",
+      "title": "Wraps poulet crudités",
+      "servings": 4,
+      "minutes": 20,
+      "kidFriendly": true,
+      "tags": [
+        "rapide",
+        "froid"
+      ],
+      "ingredients": [
+        {
+          "ing": "tortillas",
+          "qty": 8
+        },
+        {
+          "ing": "poulet",
+          "qty": 400
+        },
+        {
+          "ing": "tomate",
+          "qty": 2
+        },
+        {
+          "ing": "concombre",
+          "qty": 1
+        },
+        {
+          "ing": "yaourt-nature",
+          "qty": 2
+        },
+        {
+          "ing": "citron",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Fais dorer le poulet en lamelles.",
+        "Mélange yaourt, citron et sel pour la sauce.",
+        "Garnis les tortillas de poulet, tomate, concombre et sauce."
+      ]
+    },
+    {
+      "id": "porridge",
+      "title": "Porridge banane",
+      "servings": 3,
+      "minutes": 10,
+      "kidFriendly": true,
+      "tags": [
+        "petit-déjeuner",
+        "rapide"
+      ],
+      "ingredients": [
+        {
+          "ing": "flocons-avoine",
+          "qty": 150
+        },
+        {
+          "ing": "lait",
+          "qty": 600
+        },
+        {
+          "ing": "banane",
+          "qty": 2
+        }
+      ],
+      "steps": [
+        "Fais chauffer le lait avec les flocons 5 min en remuant.",
+        "Ajoute la banane écrasée."
+      ]
+    },
+    {
+      "id": "hachis",
+      "title": "Hachis parmentier",
+      "servings": 4,
+      "minutes": 50,
+      "kidFriendly": true,
+      "tags": [
+        "four",
+        "batch"
+      ],
+      "ingredients": [
+        {
+          "ing": "boeuf-hache",
+          "qty": 400
+        },
+        {
+          "ing": "pomme-de-terre",
+          "qty": 1000
+        },
+        {
+          "ing": "lait",
+          "qty": 200
+        },
+        {
+          "ing": "beurre",
+          "qty": 30
+        },
+        {
+          "ing": "oignon",
+          "qty": 1
+        },
+        {
+          "ing": "emmental",
+          "qty": 60
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Cuis les pommes de terre, écrase-les avec lait et beurre.",
+        "Fais revenir l’oignon et la viande.",
+        "Viande au fond du plat, purée dessus, emmental, 20 min à 200 °C."
+      ]
+    },
+    {
+      "id": "pates-epinards",
+      "title": "Pâtes crème-épinards",
+      "servings": 4,
+      "minutes": 20,
+      "kidFriendly": true,
+      "tags": [
+        "végétarien",
+        "rapide"
+      ],
+      "ingredients": [
+        {
+          "ing": "pates",
+          "qty": 400
+        },
+        {
+          "ing": "epinards",
+          "qty": 300
+        },
+        {
+          "ing": "creme",
+          "qty": 200
+        },
+        {
+          "ing": "ail",
+          "qty": 1
+        },
+        {
+          "ing": "emmental",
+          "qty": 50
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Cuis les pâtes.",
+        "Fais tomber les épinards avec l’ail, ajoute la crème.",
+        "Mélange aux pâtes avec l’emmental."
+      ]
+    },
+    {
+      "id": "patate-douce-pois-chiches",
+      "title": "Patate douce rôtie et pois chiches",
+      "servings": 4,
+      "minutes": 40,
+      "kidFriendly": true,
+      "tags": [
+        "végétarien",
+        "four"
+      ],
+      "ingredients": [
+        {
+          "ing": "patate-douce",
+          "qty": 800
+        },
+        {
+          "ing": "pois-chiches",
+          "qty": 400
+        },
+        {
+          "ing": "cumin",
+          "qty": 1
+        },
+        {
+          "ing": "huile-olive",
+          "qty": 2
+        },
+        {
+          "ing": "yaourt-nature",
+          "qty": 2
+        },
+        {
+          "ing": "citron",
+          "qty": 1
+        },
+        {
+          "ing": "sel",
+          "qty": 1
+        }
+      ],
+      "steps": [
+        "Coupe la patate douce en cubes, mélange avec pois chiches, cumin et huile.",
+        "Rôtis 30 min à 200 °C.",
+        "Sers avec une sauce yaourt-citron."
+      ]
+    }
+  ],
+  "tips": {
+    "basics": [
+      "Féculents : riz, pâtes, lentilles, flocons d’avoine",
+      "Conserves : tomates concassées, pois chiches, thon, maïs",
+      "Frais : œufs, yaourts, fromage",
+      "Légumes faciles : oignons, carottes, courgettes, épinards surgelés",
+      "Fruits : bananes, pommes, fruits de saison"
+    ],
+    "antiWaste": [
+      "Range devant ce qui expire bientôt.",
+      "Les légumes un peu fatigués font de très bonnes soupes.",
+      "Cuisine une double dose et congèle une part.",
+      "Le pain rassis devient pain perdu ou chapelure."
+    ],
+    "season": {
+      "1": [
+        "poireau",
+        "chou",
+        "carotte",
+        "orange",
+        "pomme"
+      ],
+      "2": [
+        "poireau",
+        "endive",
+        "carotte",
+        "orange",
+        "kiwi"
+      ],
+      "3": [
+        "épinard",
+        "poireau",
+        "radis",
+        "pomme",
+        "kiwi"
+      ],
+      "4": [
+        "asperge",
+        "radis",
+        "épinard",
+        "fraise"
+      ],
+      "5": [
+        "asperge",
+        "petits pois",
+        "fraise",
+        "rhubarbe"
+      ],
+      "6": [
+        "courgette",
+        "tomate",
+        "fraise",
+        "cerise",
+        "abricot"
+      ],
+      "7": [
+        "tomate",
+        "courgette",
+        "aubergine",
+        "melon",
+        "pêche"
+      ],
+      "8": [
+        "tomate",
+        "poivron",
+        "aubergine",
+        "melon",
+        "prune"
+      ],
+      "9": [
+        "courge",
+        "poivron",
+        "raisin",
+        "pomme",
+        "figue"
+      ],
+      "10": [
+        "courge",
+        "champignon",
+        "pomme",
+        "poire",
+        "raisin"
+      ],
+      "11": [
+        "courge",
+        "poireau",
+        "chou",
+        "pomme",
+        "poire"
+      ],
+      "12": [
+        "chou",
+        "poireau",
+        "carotte",
+        "clémentine",
+        "pomme"
+      ]
+    }
+  }
+}

@@ -2,16 +2,16 @@
 
 Appli perso pour apprendre, bouger, cuisiner et entraîner son cerveau, en sessions courtes de 10 à 20 minutes, sur téléphone comme sur ordinateur. Elle fonctionne sans compte, sans serveur et sans IA. Toutes les données restent sur l’appareil.
 
-> **État : tranches 1 à 3 de la phase 1.** Sont prêts :
+> **État : phase 1 (MVP) terminée, tranches 1 à 4.** Sont prêts :
 > - le noyau : écran Aujourd’hui, répétition espacée FSRS, XP, série, badges, sauvegarde ;
 > - le **chinois** : tons et 50 premiers mots HSK 1 ;
 > - le **lingala** : salutations et dialogue, contenu « à vérifier / vérifié », corrections, enregistrement au micro ;
 > - le **code** : chapitre 1 de la mission Hélios, en Python dans le navigateur ;
 > - l’**import de contenu** en CSV ou JSON ;
 > - l’**informatique « DSI »**, module cybersécurité : fiche, jeu « repère le phishing », quiz et flashcards ;
-> - l’espace **Cerveau** : jeu de séquence et calcul mental adaptatifs, avec un jeu du jour.
->
-> Le sport et la cuisine arrivent en tranche 4.
+> - l’espace **Cerveau** : jeu de séquence et calcul mental adaptatifs, avec un jeu du jour ;
+> - le **Sport** : programme débutant au poids du corps (5 progressions), séance guidée, minuteur (tabata, intervalles, circuits), journal et courbes, planning de la semaine ;
+> - la **Cuisine** : recettes à portions ajustables pour un foyer de 2 adultes et 1 enfant, placard et frigo avec dates de péremption, liste de courses par rayon, plats faisables avec le stock, conseils.
 
 ## Lancer l’appli
 
@@ -125,6 +125,23 @@ Un message de la simulation porte un `verdict` (`phishing` ou `legit`) et des `c
 
 Les noms d’entreprises et les domaines des messages sont fictifs.
 
+### Sport : `content/sport/bodyweight.json`
+
+Une *chaîne* (tractions, pompes, dips, jambes, gainage) est une suite de paliers, du plus facile au plus dur. Chaque palier indique :
+- `metric` : `reps` ou `seconds` ;
+- `sets` et `target` : le nombre de séries et l’objectif par série ;
+- `cues`, les consignes, et `mistakes`, les erreurs fréquentes.
+
+Le programme (`program`) décrit les séances A et B et le nombre de validations nécessaires avant de proposer le palier suivant (`validationsToProgress`, 3 par défaut). Une séance est validée quand toutes les séries atteignent l’objectif. L’appli propose alors le palier suivant, sans l’imposer, et on peut toujours revenir à une variante plus facile.
+
+### Cuisine : `content/kitchen/base.json`
+
+- `catalog` : les ingrédients, avec leur rayon et leur unité. `staple: true` désigne un basique supposé toujours présent (sel, huile…) : il n’apparaît pas dans la liste de courses.
+- `recipes` : les recettes, dont les quantités sont données pour `servings` portions.
+- `tips` : la liste de base, les produits de saison par mois et les astuces anti-gaspi.
+
+Pour tes propres recettes, *Cuisine › Recettes › Ajouter ma recette* comprend des lignes comme « 200 g de riz » ou « 3 œufs ». Le placard accepte la même saisie rapide.
+
 ### Importer du vocabulaire depuis l’appli
 
 *Réglages › Mon contenu* accepte un CSV (séparateur `;` ou `,`, avec en-tête) ou un JSON :
@@ -165,6 +182,8 @@ src/spaces/
   learn/code/       parcours code : missions, éditeur, worker Python (Pyodide)
   learn/it/         parcours informatique : module cyber (fiche, phishing, quiz)
   brain/            espace Cerveau : séquence, calcul mental, jeu du jour
+  sport/            espace Sport : programme, séance guidée, minuteur, journal
+  kitchen/          espace Cuisine : recettes, placard, courses, suggestions
 src/screens/        Aujourd'hui, Révisions, Progression, Réglages
 tests/              Vitest
 ```
@@ -185,5 +204,11 @@ Principes :
 
 ## Feuille de route
 
-- **Tranche 4** : sport (minuteur, journal, programme débutant) ; cuisine (recettes, inventaire, liste de courses, plats faisables) ; foyer de 2 adultes + 1 enfant.
-- **Phases suivantes** : hébergement HTTPS, autres modules DSI et simulations, dialogues chinois et HSK 2–3, nutrition Ciqual, agenda des repas, méditation et tai chi, quiz façon Pix, tuteur IA optionnel, synchronisation.
+- **Phase 2** :
+  - hébergement HTTPS, pour l’installation sur téléphone, le hors-ligne et le micro ;
+  - autres modules DSI avec simulations (calculateur de sous-réseau, parcours d’un paquet, scénario d’incident où l’on joue le RSSI) ;
+  - suite du parcours code : JS en sandbox, terminal simulé, Git, SQL ;
+  - dialogues chinois, radicaux et HSK 2–3 ;
+  - famille, nombres et conjugaison en lingala.
+- **Phase 3** : calculateur nutritionnel (Ciqual), agenda des repas en glisser-déposer, méditation, respiration et tai chi guidés, quiz façon Pix.
+- **Phase 4** : tuteur IA optionnel avec ta clé Claude, synchronisation entre appareils.

@@ -4,6 +4,8 @@ import { lingalaModule } from './learn/lingala/module';
 import { codeModule } from './learn/code/module';
 import { itModuleTrack } from './learn/it/module';
 import { brainSpace } from './brain/module';
+import { sportSpace } from './sport/module';
+import { kitchenSpace } from './kitchen/module';
 
 /** Parcours d'apprentissage. Ajouter un parcours = l'ajouter ici. */
 export const TRACKS: TrackModule[] = [
@@ -27,7 +29,7 @@ export const SPACES: SpaceModule[] = [
       return lists.flat();
     },
   },
-  { id: 'sport', label: 'Sport', path: '/sport', ready: false },
-  { id: 'kitchen', label: 'Cuisine', path: '/kitchen', ready: false },
+  sportSpace,
+  kitchenSpace,
   brainSpace,
 ];

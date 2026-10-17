@@ -67,6 +67,36 @@ export interface AudioClipRow {
   label?: string;
 }
 
+/** Une séance de sport enregistrée (programme ou libre). */
+export interface WorkoutRow {
+  id?: number;
+  day: string;
+  ts: number;
+  sessionId: string;
+  title: string;
+  entries: { chain: string; stepId: string; metric: 'reps' | 'seconds'; target: number; sets: number[] }[];
+  minutes: number;
+  feeling?: number;
+  note?: string;
+}
+
+/** Placard / frigo. `ing` = identifiant du catalogue, ou `free:<nom>` pour un produit hors catalogue. */
+export interface PantryRow {
+  id?: number;
+  ing: string;
+  name: string;
+  qty: number;
+  unit: string;
+  expires?: string;
+  addedAt: number;
+}
+
+export interface UserRecipeRow {
+  id: string;
+  recipe: import('../content/schemas').Recipe;
+  updatedAt: number;
+}
+
 export class AppDB extends Dexie {
   cards!: EntityTable<CardRow, 'id'>;
   reviewLogs!: EntityTable<ReviewLogRow, 'id'>;
@@ -75,6 +105,9 @@ export class AppDB extends Dexie {
   settings!: EntityTable<SettingRow, 'key'>;
   contentEdits!: EntityTable<ContentEditRow, 'id'>;
   audioClips!: EntityTable<AudioClipRow, 'id'>;
+  workouts!: EntityTable<WorkoutRow, 'id'>;
+  pantry!: EntityTable<PantryRow, 'id'>;
+  userRecipes!: EntityTable<UserRecipeRow, 'id'>;
 
   constructor(name = 'appli-perso') {
     super(name);
@@ -87,9 +120,26 @@ export class AppDB extends Dexie {
       contentEdits: 'id, track',
       audioClips: '++id, itemId',
     });
+    // Tranche 4 : sport et cuisine.
+    this.version(2).stores({
+      workouts: '++id, day, ts, sessionId',
+      pantry: '++id, ing, expires',
+      userRecipes: 'id',
+    });
   }
 }
 
 export const db = new AppDB();
 
-export const TABLES = ['cards', 'reviewLogs', 'activity', 'lessonProgress', 'settings', 'contentEdits', 'audioClips'] as const;
+export const TABLES = [
+  'cards',
+  'reviewLogs',
+  'activity',
+  'lessonProgress',
+  'settings',
+  'contentEdits',
+  'audioClips',
+  'workouts',
+  'pantry',
+  'userRecipes',
+] as const;

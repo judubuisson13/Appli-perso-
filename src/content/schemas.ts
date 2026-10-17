@@ -150,3 +150,69 @@ export const itModule = z.object({
 
 export type ItModule = z.infer<typeof itModule>;
 export type PhishingMail = ItModule['phishing'][number];
+
+/* ---------- Sport ---------- */
+
+export const exerciseStep = z.object({
+  id: z.string(),
+  name: z.string(),
+  metric: z.enum(['reps', 'seconds']),
+  sets: z.number().int().min(1),
+  target: z.number().int().min(1),
+  cues: z.array(z.string()).min(1),
+  mistakes: z.array(z.string()),
+});
+
+export const sportContent = z
+  .object({
+    id: z.string(),
+    version: z.number().int(),
+    chains: z.array(z.object({ id: z.string(), name: z.string(), muscles: z.string(), steps: z.array(exerciseStep).min(2) })),
+    program: z.object({
+      id: z.string(),
+      title: z.string(),
+      sessionsPerWeek: z.number().int(),
+      validationsToProgress: z.number().int().min(1),
+      sessions: z.array(z.object({ id: z.string(), title: z.string(), blocks: z.array(z.object({ chain: z.string(), rest: z.number().int() })).min(1) })),
+    }),
+  })
+  .superRefine((d, ctx) => {
+    const chains = new Set(d.chains.map((c) => c.id));
+    for (const s of d.program.sessions)
+      for (const b of s.blocks) if (!chains.has(b.chain)) ctx.addIssue({ code: 'custom', message: `${s.id} : chaîne inconnue ${b.chain}` });
+  });
+
+export type ExerciseStep = z.infer<typeof exerciseStep>;
+export type SportContent = z.infer<typeof sportContent>;
+
+/* ---------- Cuisine ---------- */
+
+export const ingredient = z.object({ id: z.string(), name: z.string(), aisle: z.string(), unit: z.string(), staple: z.boolean().optional() });
+
+export const recipe = z.object({
+  id: z.string(),
+  title: z.string(),
+  servings: z.number().positive(),
+  minutes: z.number().int().positive(),
+  kidFriendly: z.boolean().default(true),
+  tags: z.array(z.string()).default([]),
+  ingredients: z.array(z.object({ ing: z.string(), qty: z.number().positive(), unit: z.string().optional(), name: z.string().optional() })).min(1),
+  steps: z.array(z.string()).min(1),
+});
+
+export const kitchenContent = z
+  .object({
+    id: z.string(),
+    version: z.number().int(),
+    catalog: z.array(ingredient),
+    recipes: z.array(recipe),
+    tips: z.object({ basics: z.array(z.string()), antiWaste: z.array(z.string()), season: z.record(z.string(), z.array(z.string())) }),
+  })
+  .superRefine((d, ctx) => {
+    const ids = new Set(d.catalog.map((c) => c.id));
+    for (const r of d.recipes)
+      for (const i of r.ingredients) if (!ids.has(i.ing)) ctx.addIssue({ code: 'custom', message: `${r.id} : ingrédient inconnu ${i.ing}` });
+  });
+
+export type Ingredient = z.infer<typeof ingredient>;
+export type Recipe = z.infer<typeof recipe>;

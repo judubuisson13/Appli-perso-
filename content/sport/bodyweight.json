@@ -1,0 +1,381 @@
+{
+  "id": "bodyweight",
+  "version": 1,
+  "chains": [
+    {
+      "id": "pull",
+      "name": "Tractions",
+      "muscles": "dos, biceps",
+      "steps": [
+        {
+          "id": "dead-hang",
+          "name": "Suspension à la barre",
+          "metric": "seconds",
+          "sets": 3,
+          "target": 20,
+          "cues": [
+            "Mains en pronation, un peu plus larges que les épaules",
+            "Épaules engagées : tire-les légèrement vers le bas",
+            "Respire calmement"
+          ],
+          "mistakes": [
+            "Épaules collées aux oreilles",
+            "Balancer le corps"
+          ]
+        },
+        {
+          "id": "australian",
+          "name": "Tractions australiennes (rangées sous une table ou barre basse)",
+          "metric": "reps",
+          "sets": 3,
+          "target": 10,
+          "cues": [
+            "Corps gainé, droit comme une planche",
+            "Tire la poitrine vers la barre",
+            "Descends en contrôlant"
+          ],
+          "mistakes": [
+            "Bassin qui s’affaisse",
+            "Tirer avec le cou"
+          ]
+        },
+        {
+          "id": "negative",
+          "name": "Tractions négatives",
+          "metric": "reps",
+          "sets": 3,
+          "target": 5,
+          "cues": [
+            "Monte menton au-dessus de la barre (saut ou chaise)",
+            "Descends en 4 à 5 secondes",
+            "Bras presque tendus en bas"
+          ],
+          "mistakes": [
+            "Se laisser tomber",
+            "Descendre trop vite"
+          ]
+        },
+        {
+          "id": "pullup",
+          "name": "Tractions complètes",
+          "metric": "reps",
+          "sets": 3,
+          "target": 6,
+          "cues": [
+            "Pars bras tendus, épaules engagées",
+            "Menton au-dessus de la barre",
+            "Redescends en contrôle"
+          ],
+          "mistakes": [
+            "Demi-répétitions",
+            "Élan des jambes (kipping)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "push",
+      "name": "Pompes",
+      "muscles": "pectoraux, triceps, épaules",
+      "steps": [
+        {
+          "id": "incline",
+          "name": "Pompes inclinées (mains sur une table ou un banc)",
+          "metric": "reps",
+          "sets": 3,
+          "target": 12,
+          "cues": [
+            "Mains sous les épaules",
+            "Corps gainé de la tête aux talons",
+            "Poitrine jusqu’au support"
+          ],
+          "mistakes": [
+            "Fesses en l’air",
+            "Coudes à 90° du corps"
+          ]
+        },
+        {
+          "id": "knee",
+          "name": "Pompes sur les genoux",
+          "metric": "reps",
+          "sets": 3,
+          "target": 12,
+          "cues": [
+            "Genoux au sol, hanches alignées",
+            "Coudes à environ 45° du corps",
+            "Amplitude complète"
+          ],
+          "mistakes": [
+            "Hanches cassées",
+            "Tête qui tombe"
+          ]
+        },
+        {
+          "id": "classic",
+          "name": "Pompes classiques",
+          "metric": "reps",
+          "sets": 3,
+          "target": 12,
+          "cues": [
+            "Gainage abdos et fessiers",
+            "Poitrine à un poing du sol",
+            "Pousse le sol loin de toi"
+          ],
+          "mistakes": [
+            "Dos creusé",
+            "Amplitude partielle"
+          ]
+        },
+        {
+          "id": "decline",
+          "name": "Pompes déclinées (pieds surélevés)",
+          "metric": "reps",
+          "sets": 3,
+          "target": 10,
+          "cues": [
+            "Pieds sur une chaise ou un banc",
+            "Garde le corps aligné",
+            "Contrôle la descente"
+          ],
+          "mistakes": [
+            "Bassin qui s’affaisse",
+            "Pieds trop hauts au début"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dips",
+      "name": "Dips",
+      "muscles": "triceps, pectoraux",
+      "steps": [
+        {
+          "id": "bench-dips",
+          "name": "Dips sur banc, jambes pliées",
+          "metric": "reps",
+          "sets": 3,
+          "target": 10,
+          "cues": [
+            "Mains au bord du banc, doigts vers toi",
+            "Descends jusqu’à 90° aux coudes",
+            "Épaules basses"
+          ],
+          "mistakes": [
+            "Descendre trop bas",
+            "Épaules qui remontent"
+          ]
+        },
+        {
+          "id": "bench-dips-straight",
+          "name": "Dips sur banc, jambes tendues",
+          "metric": "reps",
+          "sets": 3,
+          "target": 12,
+          "cues": [
+            "Talons au sol, jambes tendues",
+            "Dos proche du banc",
+            "Pousse avec les triceps"
+          ],
+          "mistakes": [
+            "S’éloigner du banc",
+            "Amplitude partielle"
+          ]
+        },
+        {
+          "id": "bar-dips",
+          "name": "Dips aux barres parallèles",
+          "metric": "reps",
+          "sets": 3,
+          "target": 6,
+          "cues": [
+            "Bras tendus en haut, épaules basses",
+            "Descends jusqu’à 90°",
+            "Léger penché vers l’avant"
+          ],
+          "mistakes": [
+            "Descendre trop bas trop tôt",
+            "Haussement d’épaules"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legs",
+      "name": "Jambes",
+      "muscles": "quadriceps, fessiers",
+      "steps": [
+        {
+          "id": "squat",
+          "name": "Squats au poids du corps",
+          "metric": "reps",
+          "sets": 3,
+          "target": 15,
+          "cues": [
+            "Pieds largeur d’épaules",
+            "Descends comme pour t’asseoir",
+            "Genoux dans l’axe des pieds"
+          ],
+          "mistakes": [
+            "Talons qui décollent",
+            "Genoux qui rentrent"
+          ]
+        },
+        {
+          "id": "split-squat",
+          "name": "Fentes bulgares (pied arrière sur une chaise)",
+          "metric": "reps",
+          "sets": 3,
+          "target": 10,
+          "cues": [
+            "Buste droit",
+            "Genou avant au-dessus de la cheville",
+            "Descends verticalement"
+          ],
+          "mistakes": [
+            "Pied avant trop près",
+            "Perte d’équilibre : ralentis"
+          ]
+        },
+        {
+          "id": "assisted-pistol",
+          "name": "Pistol squat assisté (main sur un appui)",
+          "metric": "reps",
+          "sets": 3,
+          "target": 5,
+          "cues": [
+            "Une jambe tendue devant",
+            "Descends lentement en t’aidant de l’appui",
+            "Remonte en poussant dans le talon"
+          ],
+          "mistakes": [
+            "Tirer fort sur l’appui",
+            "Genou qui rentre"
+          ]
+        },
+        {
+          "id": "pistol",
+          "name": "Pistol squat",
+          "metric": "reps",
+          "sets": 3,
+          "target": 5,
+          "cues": [
+            "Bras devant pour l’équilibre",
+            "Descente contrôlée jusqu’en bas",
+            "Talon au sol"
+          ],
+          "mistakes": [
+            "Rebond en bas",
+            "Dos arrondi trop tôt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "name": "Gainage",
+      "muscles": "abdominaux, lombaires",
+      "steps": [
+        {
+          "id": "plank",
+          "name": "Planche sur les avant-bras",
+          "metric": "seconds",
+          "sets": 3,
+          "target": 30,
+          "cues": [
+            "Coudes sous les épaules",
+            "Serre abdos et fessiers",
+            "Regarde le sol"
+          ],
+          "mistakes": [
+            "Fesses trop hautes",
+            "Dos creusé"
+          ]
+        },
+        {
+          "id": "side-plank",
+          "name": "Gainage latéral",
+          "metric": "seconds",
+          "sets": 3,
+          "target": 25,
+          "cues": [
+            "Coude sous l’épaule",
+            "Corps aligné, hanches hautes",
+            "Change de côté entre les séries"
+          ],
+          "mistakes": [
+            "Hanche qui tombe",
+            "Rotation du buste"
+          ]
+        },
+        {
+          "id": "hollow",
+          "name": "Hollow body",
+          "metric": "seconds",
+          "sets": 3,
+          "target": 20,
+          "cues": [
+            "Bas du dos plaqué au sol",
+            "Bras et jambes tendus, décollés",
+            "Plus les jambes sont basses, plus c’est dur"
+          ],
+          "mistakes": [
+            "Dos qui se décolle",
+            "Retenir sa respiration"
+          ]
+        }
+      ]
+    }
+  ],
+  "program": {
+    "id": "beginner-bw",
+    "title": "Poids du corps · débutant",
+    "sessionsPerWeek": 3,
+    "validationsToProgress": 3,
+    "sessions": [
+      {
+        "id": "A",
+        "title": "Séance A",
+        "blocks": [
+          {
+            "chain": "push",
+            "rest": 90
+          },
+          {
+            "chain": "pull",
+            "rest": 90
+          },
+          {
+            "chain": "legs",
+            "rest": 60
+          },
+          {
+            "chain": "core",
+            "rest": 45
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "Séance B",
+        "blocks": [
+          {
+            "chain": "pull",
+            "rest": 90
+          },
+          {
+            "chain": "dips",
+            "rest": 90
+          },
+          {
+            "chain": "legs",
+            "rest": 60
+          },
+          {
+            "chain": "core",
+            "rest": 45
+          }
+        ]
+      }
+    ]
+  }
+}
