@@ -1,0 +1,665 @@
+{
+  "id": "hsk1",
+  "version": 1,
+  "level": "HSK 1",
+  "lessons": [
+    {
+      "id": "hsk1-l1",
+      "title": "Moi, toi, être et avoir",
+      "words": [
+        "hsk1-wo",
+        "hsk1-ni",
+        "hsk1-ta-m",
+        "hsk1-ta-f",
+        "hsk1-women",
+        "hsk1-hao",
+        "hsk1-shi",
+        "hsk1-bu",
+        "hsk1-you",
+        "hsk1-meiyou"
+      ]
+    },
+    {
+      "id": "hsk1-l2",
+      "title": "La famille et les gens",
+      "words": [
+        "hsk1-ren",
+        "hsk1-zhongguo",
+        "hsk1-baba",
+        "hsk1-mama",
+        "hsk1-erzi",
+        "hsk1-nver",
+        "hsk1-pengyou",
+        "hsk1-laoshi",
+        "hsk1-xuesheng",
+        "hsk1-yisheng"
+      ]
+    },
+    {
+      "id": "hsk1-l3",
+      "title": "Les nombres de 1 à 10",
+      "words": [
+        "hsk1-yi",
+        "hsk1-er",
+        "hsk1-san",
+        "hsk1-si",
+        "hsk1-wu",
+        "hsk1-liu",
+        "hsk1-qi",
+        "hsk1-ba",
+        "hsk1-jiu",
+        "hsk1-shi2"
+      ]
+    },
+    {
+      "id": "hsk1-l4",
+      "title": "Manger, boire, bouger",
+      "words": [
+        "hsk1-chi",
+        "hsk1-he",
+        "hsk1-shui",
+        "hsk1-cha",
+        "hsk1-mifan",
+        "hsk1-qu",
+        "hsk1-lai",
+        "hsk1-kan",
+        "hsk1-shuo",
+        "hsk1-jiao"
+      ]
+    },
+    {
+      "id": "hsk1-l5",
+      "title": "Questions et politesse",
+      "words": [
+        "hsk1-shenme",
+        "hsk1-shei",
+        "hsk1-nar",
+        "hsk1-duoshao",
+        "hsk1-jintian",
+        "hsk1-mingtian",
+        "hsk1-xiexie",
+        "hsk1-zaijian",
+        "hsk1-duibuqi",
+        "hsk1-xihuan"
+      ]
+    }
+  ],
+  "words": [
+    {
+      "id": "hsk1-wo",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "syllables": [
+        "wǒ"
+      ],
+      "fr": "je, moi",
+      "example": {
+        "hanzi": "我是学生。",
+        "pinyin": "Wǒ shì xuésheng.",
+        "fr": "Je suis étudiant·e."
+      }
+    },
+    {
+      "id": "hsk1-ni",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "syllables": [
+        "nǐ"
+      ],
+      "fr": "tu, toi",
+      "example": {
+        "hanzi": "你好！",
+        "pinyin": "Nǐ hǎo !",
+        "fr": "Bonjour !"
+      }
+    },
+    {
+      "id": "hsk1-ta-m",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "syllables": [
+        "tā"
+      ],
+      "fr": "il, lui",
+      "example": {
+        "hanzi": "他是老师。",
+        "pinyin": "Tā shì lǎoshī.",
+        "fr": "Il est professeur."
+      }
+    },
+    {
+      "id": "hsk1-ta-f",
+      "hanzi": "她",
+      "pinyin": "tā",
+      "syllables": [
+        "tā"
+      ],
+      "fr": "elle",
+      "example": {
+        "hanzi": "她是我妈妈。",
+        "pinyin": "Tā shì wǒ māma.",
+        "fr": "C'est ma mère."
+      }
+    },
+    {
+      "id": "hsk1-women",
+      "hanzi": "我们",
+      "pinyin": "wǒmen",
+      "syllables": [
+        "wǒ",
+        "men"
+      ],
+      "fr": "nous",
+      "example": {
+        "hanzi": "我们是朋友。",
+        "pinyin": "Wǒmen shì péngyou.",
+        "fr": "Nous sommes amis."
+      }
+    },
+    {
+      "id": "hsk1-hao",
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "syllables": [
+        "hǎo"
+      ],
+      "fr": "bien, bon",
+      "example": {
+        "hanzi": "你好吗？",
+        "pinyin": "Nǐ hǎo ma ?",
+        "fr": "Tu vas bien ?"
+      }
+    },
+    {
+      "id": "hsk1-shi",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "syllables": [
+        "shì"
+      ],
+      "fr": "être (c'est)",
+      "example": {
+        "hanzi": "我是中国人。",
+        "pinyin": "Wǒ shì Zhōngguó rén.",
+        "fr": "Je suis chinois·e."
+      }
+    },
+    {
+      "id": "hsk1-bu",
+      "hanzi": "不",
+      "pinyin": "bù",
+      "syllables": [
+        "bù"
+      ],
+      "fr": "ne… pas",
+      "example": {
+        "hanzi": "我不是老师。",
+        "pinyin": "Wǒ bú shì lǎoshī.",
+        "fr": "Je ne suis pas professeur."
+      }
+    },
+    {
+      "id": "hsk1-you",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "syllables": [
+        "yǒu"
+      ],
+      "fr": "avoir, il y a",
+      "example": {
+        "hanzi": "我有一个儿子。",
+        "pinyin": "Wǒ yǒu yí ge érzi.",
+        "fr": "J'ai un fils."
+      }
+    },
+    {
+      "id": "hsk1-meiyou",
+      "hanzi": "没有",
+      "pinyin": "méiyǒu",
+      "syllables": [
+        "méi",
+        "yǒu"
+      ],
+      "fr": "ne pas avoir",
+      "example": {
+        "hanzi": "我没有茶。",
+        "pinyin": "Wǒ méiyǒu chá.",
+        "fr": "Je n'ai pas de thé."
+      }
+    },
+    {
+      "id": "hsk1-ren",
+      "hanzi": "人",
+      "pinyin": "rén",
+      "syllables": [
+        "rén"
+      ],
+      "fr": "personne, gens"
+    },
+    {
+      "id": "hsk1-zhongguo",
+      "hanzi": "中国",
+      "pinyin": "Zhōngguó",
+      "syllables": [
+        "Zhōng",
+        "guó"
+      ],
+      "fr": "Chine"
+    },
+    {
+      "id": "hsk1-baba",
+      "hanzi": "爸爸",
+      "pinyin": "bàba",
+      "syllables": [
+        "bà",
+        "ba"
+      ],
+      "fr": "papa"
+    },
+    {
+      "id": "hsk1-mama",
+      "hanzi": "妈妈",
+      "pinyin": "māma",
+      "syllables": [
+        "mā",
+        "ma"
+      ],
+      "fr": "maman"
+    },
+    {
+      "id": "hsk1-erzi",
+      "hanzi": "儿子",
+      "pinyin": "érzi",
+      "syllables": [
+        "ér",
+        "zi"
+      ],
+      "fr": "fils"
+    },
+    {
+      "id": "hsk1-nver",
+      "hanzi": "女儿",
+      "pinyin": "nǚ'ér",
+      "syllables": [
+        "nǚ",
+        "ér"
+      ],
+      "fr": "fille (enfant)"
+    },
+    {
+      "id": "hsk1-pengyou",
+      "hanzi": "朋友",
+      "pinyin": "péngyou",
+      "syllables": [
+        "péng",
+        "you"
+      ],
+      "fr": "ami·e"
+    },
+    {
+      "id": "hsk1-laoshi",
+      "hanzi": "老师",
+      "pinyin": "lǎoshī",
+      "syllables": [
+        "lǎo",
+        "shī"
+      ],
+      "fr": "professeur"
+    },
+    {
+      "id": "hsk1-xuesheng",
+      "hanzi": "学生",
+      "pinyin": "xuésheng",
+      "syllables": [
+        "xué",
+        "sheng"
+      ],
+      "fr": "élève, étudiant·e"
+    },
+    {
+      "id": "hsk1-yisheng",
+      "hanzi": "医生",
+      "pinyin": "yīshēng",
+      "syllables": [
+        "yī",
+        "shēng"
+      ],
+      "fr": "médecin"
+    },
+    {
+      "id": "hsk1-yi",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "syllables": [
+        "yī"
+      ],
+      "fr": "un (1)"
+    },
+    {
+      "id": "hsk1-er",
+      "hanzi": "二",
+      "pinyin": "èr",
+      "syllables": [
+        "èr"
+      ],
+      "fr": "deux (2)"
+    },
+    {
+      "id": "hsk1-san",
+      "hanzi": "三",
+      "pinyin": "sān",
+      "syllables": [
+        "sān"
+      ],
+      "fr": "trois (3)"
+    },
+    {
+      "id": "hsk1-si",
+      "hanzi": "四",
+      "pinyin": "sì",
+      "syllables": [
+        "sì"
+      ],
+      "fr": "quatre (4)"
+    },
+    {
+      "id": "hsk1-wu",
+      "hanzi": "五",
+      "pinyin": "wǔ",
+      "syllables": [
+        "wǔ"
+      ],
+      "fr": "cinq (5)"
+    },
+    {
+      "id": "hsk1-liu",
+      "hanzi": "六",
+      "pinyin": "liù",
+      "syllables": [
+        "liù"
+      ],
+      "fr": "six (6)"
+    },
+    {
+      "id": "hsk1-qi",
+      "hanzi": "七",
+      "pinyin": "qī",
+      "syllables": [
+        "qī"
+      ],
+      "fr": "sept (7)"
+    },
+    {
+      "id": "hsk1-ba",
+      "hanzi": "八",
+      "pinyin": "bā",
+      "syllables": [
+        "bā"
+      ],
+      "fr": "huit (8)"
+    },
+    {
+      "id": "hsk1-jiu",
+      "hanzi": "九",
+      "pinyin": "jiǔ",
+      "syllables": [
+        "jiǔ"
+      ],
+      "fr": "neuf (9)"
+    },
+    {
+      "id": "hsk1-shi2",
+      "hanzi": "十",
+      "pinyin": "shí",
+      "syllables": [
+        "shí"
+      ],
+      "fr": "dix (10)"
+    },
+    {
+      "id": "hsk1-chi",
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "syllables": [
+        "chī"
+      ],
+      "fr": "manger",
+      "example": {
+        "hanzi": "我吃米饭。",
+        "pinyin": "Wǒ chī mǐfàn.",
+        "fr": "Je mange du riz."
+      }
+    },
+    {
+      "id": "hsk1-he",
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "syllables": [
+        "hē"
+      ],
+      "fr": "boire",
+      "example": {
+        "hanzi": "我喝茶。",
+        "pinyin": "Wǒ hē chá.",
+        "fr": "Je bois du thé."
+      }
+    },
+    {
+      "id": "hsk1-shui",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "syllables": [
+        "shuǐ"
+      ],
+      "fr": "eau"
+    },
+    {
+      "id": "hsk1-cha",
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "syllables": [
+        "chá"
+      ],
+      "fr": "thé"
+    },
+    {
+      "id": "hsk1-mifan",
+      "hanzi": "米饭",
+      "pinyin": "mǐfàn",
+      "syllables": [
+        "mǐ",
+        "fàn"
+      ],
+      "fr": "riz (cuit)"
+    },
+    {
+      "id": "hsk1-qu",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "syllables": [
+        "qù"
+      ],
+      "fr": "aller"
+    },
+    {
+      "id": "hsk1-lai",
+      "hanzi": "来",
+      "pinyin": "lái",
+      "syllables": [
+        "lái"
+      ],
+      "fr": "venir"
+    },
+    {
+      "id": "hsk1-kan",
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "syllables": [
+        "kàn"
+      ],
+      "fr": "regarder, lire"
+    },
+    {
+      "id": "hsk1-shuo",
+      "hanzi": "说",
+      "pinyin": "shuō",
+      "syllables": [
+        "shuō"
+      ],
+      "fr": "parler, dire"
+    },
+    {
+      "id": "hsk1-jiao",
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "syllables": [
+        "jiào"
+      ],
+      "fr": "s'appeler, appeler",
+      "example": {
+        "hanzi": "我叫王明。",
+        "pinyin": "Wǒ jiào Wáng Míng.",
+        "fr": "Je m'appelle Wang Ming."
+      }
+    },
+    {
+      "id": "hsk1-shenme",
+      "hanzi": "什么",
+      "pinyin": "shénme",
+      "syllables": [
+        "shén",
+        "me"
+      ],
+      "fr": "quoi, quel",
+      "example": {
+        "hanzi": "你叫什么名字？",
+        "pinyin": "Nǐ jiào shénme míngzi ?",
+        "fr": "Comment tu t'appelles ?"
+      }
+    },
+    {
+      "id": "hsk1-shei",
+      "hanzi": "谁",
+      "pinyin": "shéi",
+      "syllables": [
+        "shéi"
+      ],
+      "fr": "qui",
+      "example": {
+        "hanzi": "他是谁？",
+        "pinyin": "Tā shì shéi ?",
+        "fr": "Qui est-ce ?"
+      }
+    },
+    {
+      "id": "hsk1-nar",
+      "hanzi": "哪儿",
+      "pinyin": "nǎr",
+      "syllables": [
+        "nǎr"
+      ],
+      "fr": "où",
+      "example": {
+        "hanzi": "你去哪儿？",
+        "pinyin": "Nǐ qù nǎr ?",
+        "fr": "Où vas-tu ?"
+      }
+    },
+    {
+      "id": "hsk1-duoshao",
+      "hanzi": "多少",
+      "pinyin": "duōshao",
+      "syllables": [
+        "duō",
+        "shao"
+      ],
+      "fr": "combien",
+      "example": {
+        "hanzi": "多少钱？",
+        "pinyin": "Duōshao qián ?",
+        "fr": "Combien ça coûte ?"
+      }
+    },
+    {
+      "id": "hsk1-jintian",
+      "hanzi": "今天",
+      "pinyin": "jīntiān",
+      "syllables": [
+        "jīn",
+        "tiān"
+      ],
+      "fr": "aujourd'hui"
+    },
+    {
+      "id": "hsk1-mingtian",
+      "hanzi": "明天",
+      "pinyin": "míngtiān",
+      "syllables": [
+        "míng",
+        "tiān"
+      ],
+      "fr": "demain",
+      "example": {
+        "hanzi": "明天见！",
+        "pinyin": "Míngtiān jiàn !",
+        "fr": "À demain !"
+      }
+    },
+    {
+      "id": "hsk1-xiexie",
+      "hanzi": "谢谢",
+      "pinyin": "xièxie",
+      "syllables": [
+        "xiè",
+        "xie"
+      ],
+      "fr": "merci",
+      "example": {
+        "hanzi": "谢谢你！",
+        "pinyin": "Xièxie nǐ !",
+        "fr": "Merci à toi !"
+      }
+    },
+    {
+      "id": "hsk1-zaijian",
+      "hanzi": "再见",
+      "pinyin": "zàijiàn",
+      "syllables": [
+        "zài",
+        "jiàn"
+      ],
+      "fr": "au revoir"
+    },
+    {
+      "id": "hsk1-duibuqi",
+      "hanzi": "对不起",
+      "pinyin": "duìbuqǐ",
+      "syllables": [
+        "duì",
+        "bu",
+        "qǐ"
+      ],
+      "fr": "pardon, désolé·e",
+      "example": {
+        "hanzi": "对不起！— 没关系。",
+        "pinyin": "Duìbuqǐ ! — Méi guānxi.",
+        "fr": "Pardon ! — Ce n'est rien."
+      }
+    },
+    {
+      "id": "hsk1-xihuan",
+      "hanzi": "喜欢",
+      "pinyin": "xǐhuan",
+      "syllables": [
+        "xǐ",
+        "huan"
+      ],
+      "fr": "aimer (bien)",
+      "example": {
+        "hanzi": "我喜欢喝茶。",
+        "pinyin": "Wǒ xǐhuan hē chá.",
+        "fr": "J'aime boire du thé."
+      }
+    }
+  ]
+}

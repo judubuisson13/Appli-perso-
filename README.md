@@ -1,0 +1,120 @@
+# Mon espace
+
+Appli perso pour apprendre, bouger, cuisiner et entraîner son cerveau, en sessions courtes de 10 à 20 minutes, sur téléphone comme sur ordinateur. Elle fonctionne sans compte, sans serveur et sans IA. Toutes les données restent sur l’appareil.
+
+> **État : tranche 1 de la phase 1.** Sont prêts le noyau (écran Aujourd’hui, répétition espacée FSRS, XP, série, badges, sauvegarde) et le parcours **chinois** (tons + 50 premiers mots HSK 1). Le lingala et le code arrivent en tranche 2, la cyber et le cerveau en tranche 3, le sport et la cuisine en tranche 4.
+
+## Lancer l’appli
+
+Prérequis : [Node.js](https://nodejs.org) 22 ou plus récent.
+
+```bash
+npm install
+npm run dev        # http://localhost:5173
+```
+
+Autres commandes :
+
+| Commande | Rôle |
+|---|---|
+| `npm test` | Tests Vitest (répétition espacée, série, correcteurs, contenu, sauvegarde) |
+| `npm run typecheck` | Vérification TypeScript |
+| `npm run build` | Version de production dans `dist/`, avec service worker (hors ligne) |
+| `npm run preview` | Sert `dist/` sur le réseau local, port 4173 |
+
+La voix chinoise vient de la synthèse vocale du navigateur. Chrome et Edge sur ordinateur en fournissent une. Sur Android, installe la voix « Chinois (Chine) » dans *Paramètres › Synthèse vocale*. Tu peux la tester dans *Réglages › Voix et micro*.
+
+## Sur le téléphone
+
+**Pour essayer tout de suite**, en réseau local :
+
+```bash
+npm run build && npm run preview
+```
+
+Ouvre ensuite sur le téléphone l’adresse `http://<IP-de-ton-ordinateur>:4173` (Vite l’affiche sous « Network »).
+
+Limite : sans HTTPS, le navigateur bloque **l’installation en PWA, le mode hors ligne et le micro**. Les leçons, les tons, le tracé et les révisions fonctionnent ; les exercices oraux sont masqués.
+
+**Pour l’installer pour de bon** (prévu en phase 2), il faut servir `dist/` en HTTPS, par exemple avec GitHub Pages ou Netlify. L’appli utilise des chemins relatifs et un routage par `#`, donc n’importe quel hébergement statique convient. Une fois en ligne :
+
+- Android / Chrome : menu ⋮ › *Installer l’application* ;
+- iPhone / Safari : bouton Partager › *Sur l’écran d’accueil*.
+
+## Tes données
+
+- Tout est stocké dans IndexedDB, sur l’appareil.
+- *Réglages › Mes données › Exporter* télécharge une sauvegarde JSON complète, qui inclura les enregistrements audio dès la tranche 2. *Importer* remplace toutes les données par celles du fichier.
+- Exporte régulièrement : un navigateur peut vider son stockage s’il manque de place, et il n’y a pas encore de synchronisation entre appareils.
+
+## Ajouter ou modifier du contenu
+
+Le contenu pédagogique se trouve dans `content/`, séparé du code, versionné et validé par des schémas zod (`src/content/schemas.ts`). Si un fichier est invalide, `npm test` échoue et le message indique quoi corriger.
+
+### Vocabulaire chinois : `content/chinese/hsk1.json`
+
+```json
+{
+  "id": "hsk1-xiexie",
+  "hanzi": "谢谢",
+  "pinyin": "xièxie",
+  "syllables": ["xiè", "xie"],
+  "fr": "merci",
+  "example": { "hanzi": "谢谢你！", "pinyin": "Xièxie nǐ !", "fr": "Merci à toi !" }
+}
+```
+
+- `id` : unique et stable. Ne le change plus une fois le mot appris, sinon sa carte de révision sera perdue.
+- `syllables` : le pinyin découpé en syllabes, avec les accents. Les tons et les couleurs en sont déduits, ton neutre compris (sans accent). Collées bout à bout, sans apostrophe, les syllabes doivent redonner `pinyin`.
+- `example` : facultatif.
+- Une leçon (`lessons[]`) liste des `id` de mots ; les leçons s’affichent dans l’ordre du fichier.
+
+Les données de tracé des caractères sont copiées automatiquement depuis `hanzi-writer-data` vers `public/hanzi/` à chaque `npm run dev` et `npm run build`. Un nouveau caractère ajouté au contenu se trace donc aussi hors ligne.
+
+### Syllabes de l’entraînement des tons : `content/chinese/tones.json`
+
+Ce sont des couples `{ "hanzi": "妈", "pinyin": "mā" }`. Un test vérifie que les 4 tons y sont aussi nombreux les uns que les autres. Choisis des caractères dont la prononciation isolée ne fait pas de doute : c’est le caractère que la voix lit.
+
+> L’édition depuis l’appli, l’import JSON/CSV et le statut « à vérifier / vérifié » arrivent en tranche 2, avec le lingala.
+
+## Architecture
+
+```
+content/            contenu pédagogique (JSON versionné)
+src/core/           noyau partagé par tous les espaces
+  db.ts             schéma IndexedDB (Dexie) : cartes, journal d'activité, progression, réglages, audio
+  srs.ts            répétition espacée FSRS (ts-fsrs), état sérialisable
+  cards.ts          création / notation / file des cartes dues
+  activity.ts       journal unique d'activité → XP, minutes, série
+  gamification.ts   niveaux, série de jours, badges
+  today.ts          agrégation de l'écran Aujourd'hui
+  backup.ts         export / import de sauvegarde (audio compris)
+  speech.ts         synthèse et reconnaissance vocales
+  modules.ts        contrats SpaceModule / TrackModule
+src/spaces/
+  registry.ts       liste des espaces et des parcours (le seul endroit où on les branche)
+  learn/chinese/    parcours chinois : leçons, tons, tracé, cartes de révision
+src/screens/        Aujourd'hui, Révisions, Progression, Réglages
+tests/              Vitest
+```
+
+Principes :
+
+- **Un seul journal d’activité.** Chaque leçon, révision, tracé ou coche manuelle écrit une ligne `activity`. La série de jours, l’XP, les minutes et l’état « fait » de l’écran Aujourd’hui en sont tous calculés. Une séance de sport faite hors de l’appli, une fois cochée, compte donc dans la série.
+- **Une seule file de révision.** Tous les parcours créent des `cards` (identifiant `parcours:élément:type`). Chaque parcours fournit le rendu de ses cartes, recto et verso.
+- **Brancher un nouvel espace ou parcours** se fait en trois étapes : créer un dossier dans `src/spaces/`, exporter un objet qui respecte `TrackModule` ou `SpaceModule` (`getTodayItems`, `cards`), puis l’ajouter dans `registry.ts` et déclarer ses routes dans `App.tsx`.
+- **Pas de dark patterns.** Une erreur ne fait jamais perdre d’XP, et la série ne casse pas le matin tant qu’hier a été fait. Pas de notification insistante.
+
+### Comment marche une leçon de chinois
+
+1. Les mots sont présentés par groupes de 5 : caractère, pinyin coloré par ton, audio et exemple. Le bouton « Je connais déjà » sort le mot de la leçon et le programme loin dans le temps.
+2. Trois QCM par mot : sens, écoute, production. Une erreur renvoie l’exercice 3 cases plus loin.
+3. Viennent ensuite la répétition orale (si le micro est disponible) et le tracé d’un caractère par groupe.
+4. En fin de leçon, chaque mot crée deux cartes FSRS (reconnaissance et production). Leur première note dépend des erreurs : 0 → « Bien », 1 → « Difficile », 2 ou plus → « À revoir ».
+
+## Feuille de route
+
+- **Tranche 2** : lingala (salutations, statut « à vérifier / vérifié », édition, enregistrement au micro) ; code (chapitre 1 de la mission en Python via Pyodide) ; édition et import de contenu.
+- **Tranche 3** : cyber (fiche, quiz, flashcards, jeu « repère le phishing ») ; cerveau (mémoire, calcul mental).
+- **Tranche 4** : sport (minuteur, journal, programme débutant) ; cuisine (recettes, inventaire, liste de courses, plats faisables) ; foyer de 2 adultes + 1 enfant.
+- **Phases suivantes** : hébergement HTTPS, autres modules DSI et simulations, dialogues chinois et HSK 2–3, nutrition Ciqual, agenda des repas, méditation et tai chi, quiz façon Pix, tuteur IA optionnel, synchronisation.
