@@ -795,3 +795,64 @@ code {
   color: var(--bg);
   border-color: var(--text);
 }
+
+/* ---------- Tranche 3 ---------- */
+.link-like {
+  all: unset;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.link-like:focus-visible {
+  outline: 3px solid var(--accent);
+}
+.mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  word-break: break-all;
+}
+.mail {
+  border-top: 4px solid var(--brain);
+}
+.sim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: min(320px, 100%);
+  margin: 0 auto;
+}
+.sim-cell {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+.sim-cell.lit {
+  background: var(--brain);
+  border-color: var(--brain);
+  transform: scale(1.04);
+}
+.sim-cell.bad {
+  background: var(--bad);
+  border-color: var(--bad);
+}
+.math-q {
+  font-size: clamp(2.4rem, 12vw, 3.4rem);
+  font-weight: 800;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.keypad .btn {
+  min-height: 56px;
+  font-size: 1.3rem;
+}
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}

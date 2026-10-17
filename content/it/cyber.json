@@ -1,0 +1,437 @@
+{
+  "id": "cyber",
+  "version": 1,
+  "title": "Cybersécurité : les bases",
+  "sheet": [
+    {
+      "title": "Pourquoi c’est une priorité",
+      "body": [
+        "La plupart des cyberattaques commencent par une personne qui clique, ouvre ou saisit quelque chose. La technique compte, mais le premier rempart reste le comportement.",
+        "Le rôle d’un DSI ou d’un RSSI n’est pas de tout bloquer : c’est de réduire le risque à un niveau acceptable pour l’activité, et de savoir réagir vite."
+      ]
+    },
+    {
+      "title": "Les menaces à connaître",
+      "body": [
+        "**Hameçonnage (phishing)** : un message qui imite une source de confiance pour voler des identifiants ou faire installer un logiciel. Variante ciblée : le *spear phishing*.",
+        "**Rançongiciel (ransomware)** : chiffre les données et exige une rançon, souvent après avoir volé une copie (double extorsion).",
+        "**Fraude au président** : un faux dirigeant demande un virement urgent et confidentiel.",
+        "**Vol d’identifiants** : mots de passe réutilisés, fuites de bases, attaques par force brute."
+      ]
+    },
+    {
+      "title": "Identités : IAM et MFA",
+      "body": [
+        "**IAM** (gestion des identités et des accès) : qui a accès à quoi, pourquoi, et jusqu’à quand. Principe du *moindre privilège* : chacun n’a que les droits nécessaires à son travail.",
+        "**MFA** (authentification multifacteur) : un mot de passe plus un second facteur (application, clé physique). Elle bloque l’immense majorité des usurpations de compte.",
+        "Attention à la *fatigue MFA* : un attaquant qui envoie des dizaines de demandes en espérant un « Accepter » par lassitude."
+      ]
+    },
+    {
+      "title": "Zero Trust",
+      "body": [
+        "Ne jamais faire confiance par défaut, toujours vérifier : chaque accès est contrôlé (identité, état de l’appareil, contexte), même à l’intérieur du réseau.",
+        "On abandonne l’idée d’un « château fort » où tout ce qui est dedans est sûr."
+      ]
+    },
+    {
+      "title": "Gérer un incident",
+      "body": [
+        "1. **Détecter et qualifier** : que se passe-t-il, quel périmètre ?",
+        "2. **Contenir** : isoler les machines touchées (débrancher du réseau, sans les éteindre pour garder les traces).",
+        "3. **Éradiquer et restaurer** : nettoyer, restaurer depuis des sauvegardes saines et testées.",
+        "4. **Communiquer et notifier** : direction, autorités (CNIL sous 72 h en cas de fuite de données personnelles), parfois clients.",
+        "5. **Retour d’expérience** : comprendre la cause et corriger."
+      ]
+    },
+    {
+      "title": "Normes et réglementation",
+      "body": [
+        "**ISO/IEC 27001** : norme internationale d’un système de management de la sécurité de l’information (SMSI). Certifiable. Ses mesures de sécurité sont détaillées dans l’ISO/IEC 27002.",
+        "**NIS2** : directive européenne qui étend les obligations de cybersécurité à beaucoup plus de secteurs et d’entreprises (entités « essentielles » et « importantes ») : gestion des risques, notification des incidents, responsabilité de la direction.",
+        "**RGPD** : protège les données personnelles ; une violation de données doit être notifiée à la CNIL sous 72 h quand elle présente un risque."
+      ]
+    },
+    {
+      "title": "Vocabulaire du SOC",
+      "body": [
+        "**SOC** : centre opérationnel de sécurité, l’équipe qui surveille et réagit.",
+        "**SIEM** : outil qui collecte et corrèle les journaux pour détecter des attaques.",
+        "**EDR** : agent sur les postes et serveurs qui détecte et bloque les comportements malveillants.",
+        "**IoC** (indicateur de compromission) : trace d’une attaque (adresse IP, empreinte de fichier, domaine).",
+        "**Faux positif** : une alerte qui n’était pas une vraie attaque."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "q": "Un e-mail de ta banque te demande de « confirmer ton identité sous 24 h » via un lien. Le bon réflexe ?",
+      "options": [
+        "Cliquer et vérifier que la page ressemble au site",
+        "Répondre pour demander si c’est vrai",
+        "Ne pas cliquer, et aller sur le site ou l’appli de la banque par toi-même",
+        "Transférer à tes collègues pour avis"
+      ],
+      "answer": 2,
+      "explain": "On ne suit jamais le lien d’un message inattendu : on passe par le canal habituel (appli, adresse tapée à la main, numéro connu)."
+    },
+    {
+      "id": "q2",
+      "q": "Quel est l’apport principal de la MFA ?",
+      "options": [
+        "Elle remplace les mots de passe",
+        "Un mot de passe volé ne suffit plus à se connecter",
+        "Elle chiffre le disque dur",
+        "Elle empêche le phishing d’arriver dans la boîte"
+      ],
+      "answer": 1,
+      "explain": "Avec un second facteur, l’attaquant qui a le mot de passe reste bloqué. Elle n’empêche pas les messages d’arriver."
+    },
+    {
+      "id": "q3",
+      "q": "Un poste est infecté par un rançongiciel. Première action ?",
+      "options": [
+        "L’éteindre immédiatement",
+        "L’isoler du réseau (câble, Wi-Fi) sans l’éteindre",
+        "Payer pour récupérer vite les fichiers",
+        "Lancer une restauration de sauvegarde dessus"
+      ],
+      "answer": 1,
+      "explain": "Isoler stoppe la propagation ; ne pas éteindre préserve la mémoire, utile à l’enquête. On restaure seulement après avoir nettoyé."
+    },
+    {
+      "id": "q4",
+      "q": "Le principe du moindre privilège, c’est…",
+      "options": [
+        "Donner les droits administrateur à tout le monde pour gagner du temps",
+        "Ne donner à chacun que les accès nécessaires à son travail",
+        "Supprimer les comptes inactifs une fois par an",
+        "Interdire l’accès à Internet"
+      ],
+      "answer": 1,
+      "explain": "Moins de droits = moins de dégâts possibles si un compte est compromis."
+    },
+    {
+      "id": "q5",
+      "q": "Zero Trust signifie…",
+      "options": [
+        "Ne faire confiance à aucun salarié",
+        "Ne plus utiliser de pare-feu",
+        "Vérifier chaque accès, même depuis le réseau interne",
+        "Chiffrer tous les e-mails"
+      ],
+      "answer": 2,
+      "explain": "On ne fait plus confiance par défaut à ce qui est « à l’intérieur » : identité, appareil et contexte sont vérifiés à chaque accès."
+    },
+    {
+      "id": "q6",
+      "q": "Quelle norme définit un système de management de la sécurité de l’information certifiable ?",
+      "options": [
+        "ISO 9001",
+        "ISO/IEC 27001",
+        "RGPD",
+        "NIS2"
+      ],
+      "answer": 1,
+      "explain": "ISO 9001 concerne la qualité ; le RGPD et NIS2 sont des textes européens, pas des normes certifiables."
+    },
+    {
+      "id": "q7",
+      "q": "NIS2 est…",
+      "options": [
+        "Une norme ISO",
+        "Une directive européenne de cybersécurité qui couvre de nombreux secteurs",
+        "Un antivirus",
+        "Le successeur du RGPD"
+      ],
+      "answer": 1,
+      "explain": "Elle élargit les obligations (gestion des risques, notification d’incidents) et rend la direction responsable."
+    },
+    {
+      "id": "q8",
+      "q": "Une fuite de données personnelles à risque doit être notifiée à la CNIL…",
+      "options": [
+        "Sous 72 heures",
+        "Sous 30 jours",
+        "Uniquement si un client se plaint",
+        "Jamais si les données étaient chiffrées"
+      ],
+      "answer": 0,
+      "explain": "Le RGPD impose 72 heures après en avoir pris connaissance, quand la violation présente un risque pour les personnes."
+    },
+    {
+      "id": "q9",
+      "q": "À quoi sert un SIEM ?",
+      "options": [
+        "À bloquer les e-mails indésirables",
+        "À collecter et corréler les journaux pour détecter des attaques",
+        "À gérer les mots de passe",
+        "À sauvegarder les serveurs"
+      ],
+      "answer": 1,
+      "explain": "Le SIEM centralise les journaux de nombreux systèmes et lève des alertes quand des événements forment un scénario suspect."
+    },
+    {
+      "id": "q10",
+      "q": "Ton téléphone affiche 15 demandes de validation MFA que tu n’as pas faites. Que fais-tu ?",
+      "options": [
+        "J’en accepte une pour que ça s’arrête",
+        "Je refuse tout et je change mon mot de passe, puis je préviens le support",
+        "J’éteins le téléphone",
+        "J’ignore, c’est sûrement un bug"
+      ],
+      "answer": 1,
+      "explain": "C’est une attaque par fatigue MFA : quelqu’un a ton mot de passe. Refuser, le changer et alerter."
+    }
+  ],
+  "cards": [
+    {
+      "id": "cy-1",
+      "front": "Hameçonnage (phishing)",
+      "back": "Message qui imite une source de confiance pour voler des identifiants ou faire installer un logiciel."
+    },
+    {
+      "id": "cy-2",
+      "front": "Spear phishing",
+      "back": "Hameçonnage ciblé, préparé avec des informations sur la victime."
+    },
+    {
+      "id": "cy-3",
+      "front": "Rançongiciel",
+      "back": "Logiciel qui chiffre les données et exige une rançon, souvent avec vol préalable des données (double extorsion)."
+    },
+    {
+      "id": "cy-4",
+      "front": "IAM",
+      "back": "Gestion des identités et des accès : qui a accès à quoi, pourquoi, et jusqu’à quand."
+    },
+    {
+      "id": "cy-5",
+      "front": "MFA",
+      "back": "Authentification multifacteur : mot de passe + second facteur (application, clé physique…)."
+    },
+    {
+      "id": "cy-6",
+      "front": "Fatigue MFA",
+      "back": "Attaque qui multiplie les demandes de validation pour obtenir un « Accepter » par lassitude."
+    },
+    {
+      "id": "cy-7",
+      "front": "Zero Trust",
+      "back": "Ne jamais faire confiance par défaut : chaque accès est vérifié, même en interne."
+    },
+    {
+      "id": "cy-8",
+      "front": "ISO/IEC 27001",
+      "back": "Norme certifiable d’un système de management de la sécurité de l’information (SMSI)."
+    },
+    {
+      "id": "cy-9",
+      "front": "NIS2",
+      "back": "Directive européenne qui étend les obligations de cybersécurité à de nombreux secteurs et engage la direction."
+    },
+    {
+      "id": "cy-10",
+      "front": "SOC",
+      "back": "Centre opérationnel de sécurité : l’équipe qui surveille et réagit aux incidents."
+    },
+    {
+      "id": "cy-11",
+      "front": "SIEM",
+      "back": "Outil qui collecte et corrèle les journaux pour détecter des attaques."
+    },
+    {
+      "id": "cy-12",
+      "front": "EDR",
+      "back": "Agent sur les postes et serveurs qui détecte et bloque les comportements malveillants."
+    },
+    {
+      "id": "cy-13",
+      "front": "IoC",
+      "back": "Indicateur de compromission : trace d’une attaque (IP, domaine, empreinte de fichier)."
+    },
+    {
+      "id": "cy-14",
+      "front": "Délai de notification RGPD",
+      "back": "72 heures à la CNIL pour une violation de données présentant un risque."
+    }
+  ],
+  "phishing": [
+    {
+      "id": "ph1",
+      "verdict": "phishing",
+      "fromName": "Service Client Banque Horizon",
+      "fromEmail": "securite@banque-horizon-verif.com",
+      "subject": "⚠️ Votre compte sera suspendu sous 24h",
+      "body": [
+        "Cher client,",
+        "Nous avons détecté une activité inhabituelle sur votre compte. Sans action de votre part sous 24 heures, votre accès sera définitivement suspendu.",
+        "Veuillez confirmer votre identité en cliquant ci-dessous :",
+        "{link}",
+        "Service Sécurité"
+      ],
+      "link": {
+        "text": "Confirmer mon identité",
+        "href": "http://banque-horizon-verif.com.secure-login.ru/auth"
+      },
+      "clues": [
+        "L’adresse d’expédition n’est pas le domaine de la banque (banque-horizon-verif.com).",
+        "Urgence et menace : « sous 24 h », « définitivement suspendu ».",
+        "Le lien mène en réalité vers un domaine en .ru.",
+        "« Cher client » : pas ton nom, alors que ta banque le connaît."
+      ]
+    },
+    {
+      "id": "ph2",
+      "verdict": "legit",
+      "fromName": "Banque Horizon",
+      "fromEmail": "no-reply@banque-horizon.fr",
+      "subject": "Votre relevé de septembre est disponible",
+      "body": [
+        "Bonjour Camille,",
+        "Votre relevé de compte de septembre est disponible dans votre espace client.",
+        "Pour le consulter, connectez-vous à l’application Banque Horizon ou à votre espace habituel.",
+        "Nous ne vous demanderons jamais vos codes par e-mail.",
+        "Banque Horizon"
+      ],
+      "link": null,
+      "clues": [
+        "Expéditeur sur le domaine habituel de la banque.",
+        "Aucun lien à suivre, aucune urgence, aucune demande d’information.",
+        "Il t’appelle par ton prénom et rappelle qu’on ne te demandera jamais tes codes."
+      ]
+    },
+    {
+      "id": "ph3",
+      "verdict": "phishing",
+      "fromName": "ColiRapide",
+      "fromEmail": "suivi@colirapide-livraison.info",
+      "subject": "Votre colis est en attente : frais de 1,99 €",
+      "body": [
+        "Bonjour,",
+        "Votre colis n° FR8812 n’a pas pu être livré : des frais de réexpédition de 1,99 € sont nécessaires.",
+        "Réglez-les ici pour recevoir votre colis demain :",
+        "{link}",
+        "Sans paiement sous 48 h, le colis sera retourné à l’expéditeur."
+      ],
+      "link": {
+        "text": "Payer 1,99 €",
+        "href": "https://colirapide-paiement.top/carte"
+      },
+      "clues": [
+        "Petite somme pour faire baisser la garde : le vrai but est ta carte bancaire.",
+        "Domaine inhabituel (.info, puis .top pour le paiement).",
+        "Pression du délai : « sous 48 h ».",
+        "Tu attendais vraiment un colis de ce transporteur ?"
+      ]
+    },
+    {
+      "id": "ph4",
+      "verdict": "phishing",
+      "fromName": "Marc Lefèvre (Directeur général)",
+      "fromEmail": "marc.lefevre.dg@gmail.com",
+      "subject": "Confidentiel – besoin de toi",
+      "body": [
+        "Bonjour,",
+        "Je suis en réunion et ne peux pas téléphoner. J’ai besoin que tu effectues un virement urgent de 18 400 € pour une acquisition confidentielle.",
+        "N’en parle à personne pour l’instant, je t’envoie le RIB.",
+        "Merci de ta discrétion.",
+        "Marc"
+      ],
+      "link": null,
+      "clues": [
+        "Fraude au président : urgence, confidentialité, virement.",
+        "Adresse personnelle Gmail au lieu de l’adresse de l’entreprise.",
+        "Il empêche la vérification (« ne peux pas téléphoner », « n’en parle à personne »).",
+        "Réflexe : rappeler la personne sur son numéro connu, suivre la procédure de virement."
+      ]
+    },
+    {
+      "id": "ph5",
+      "verdict": "legit",
+      "fromName": "Équipe IT",
+      "fromEmail": "it-support@mon-entreprise.fr",
+      "subject": "Maintenance planifiée samedi 8 h – 12 h",
+      "body": [
+        "Bonjour à tous,",
+        "Une maintenance des serveurs de messagerie aura lieu samedi de 8 h à 12 h. La messagerie pourra être indisponible pendant cette période.",
+        "Aucune action n’est nécessaire de votre part.",
+        "Pour toute question : poste 4242 ou le portail d’assistance habituel.",
+        "L’équipe IT"
+      ],
+      "link": null,
+      "clues": [
+        "Domaine de l’entreprise.",
+        "Information pure : aucune action, aucun lien, aucun identifiant demandé.",
+        "Canaux de contact connus (poste interne, portail habituel)."
+      ]
+    },
+    {
+      "id": "ph6",
+      "verdict": "phishing",
+      "fromName": "Microsoft 365",
+      "fromEmail": "admin@m1crosoft-365.com",
+      "subject": "Votre mot de passe expire aujourd’hui",
+      "body": [
+        "Votre mot de passe Microsoft 365 expire aujourd’hui.",
+        "Pour conserver le même mot de passe, validez-le maintenant :",
+        "{link}",
+        "Si vous ne le faites pas, vous perdrez l’accès à vos e-mails."
+      ],
+      "link": {
+        "text": "Conserver mon mot de passe",
+        "href": "https://m1crosoft-365.com/keep-password"
+      },
+      "clues": [
+        "Domaine piégé : « m1crosoft » avec un chiffre 1 à la place du i.",
+        "« Conserver le même mot de passe » : un vrai service ne propose pas ça par e-mail.",
+        "Menace de perte d’accès.",
+        "En cas de doute : aller sur le portail habituel en tapant l’adresse soi-même."
+      ]
+    },
+    {
+      "id": "ph7",
+      "verdict": "phishing",
+      "fromName": "Ressources Humaines",
+      "fromEmail": "rh@mon-entreprise.fr.partage-docs.net",
+      "subject": "Grille des augmentations 2027 (confidentiel)",
+      "body": [
+        "Bonjour,",
+        "Vous trouverez ci-joint la grille des augmentations individuelles pour 2027. Document strictement confidentiel.",
+        "Ouvrez-la avec vos identifiants professionnels :",
+        "{link}",
+        "Service RH"
+      ],
+      "link": {
+        "text": "Ouvrir Augmentations_2027.xlsx",
+        "href": "https://partage-docs.net/login?src=mon-entreprise"
+      },
+      "clues": [
+        "Le vrai domaine est partage-docs.net : « mon-entreprise.fr » n’est qu’un préfixe trompeur.",
+        "Appât de curiosité (salaires, « confidentiel »).",
+        "Demande de saisir tes identifiants pour lire un simple document."
+      ]
+    },
+    {
+      "id": "ph8",
+      "verdict": "legit",
+      "fromName": "Mairie de Villeneuve",
+      "fromEmail": "contact@villeneuve.fr",
+      "subject": "Inscriptions périscolaires : rappel",
+      "body": [
+        "Bonjour,",
+        "Les inscriptions au périscolaire pour les vacances d’hiver sont ouvertes jusqu’au 15 janvier.",
+        "Elles se font depuis l’espace famille habituel, accessible depuis le site de la mairie.",
+        "Le service enfance reste joignable au 01 23 45 67 89.",
+        "Le service enfance"
+      ],
+      "link": null,
+      "clues": [
+        "Domaine officiel de la commune.",
+        "Pas de lien direct : il renvoie vers l’espace habituel.",
+        "Délai raisonnable, aucune menace, contact téléphonique fourni."
+      ]
+    }
+  ]
+}

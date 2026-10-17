@@ -62,6 +62,10 @@ async function load() {
       wordsLearned: zhWords,
       bestToneScore: Math.max(0, ...toneScores),
       charsTraced: traced,
+      missionsDone: codeDone,
+      bestPhishing: (await db.lessonProgress.get('cyber-phishing'))?.bestScore ?? 0,
+      bestMemory: Math.max(0, ...activity.filter((a) => a.data?.game === 'memory').map((a) => Number(a.data?.score))),
+      bestMath: Math.max(0, ...activity.filter((a) => a.data?.game === 'math').map((a) => Number(a.data?.score))),
     }),
   };
 }

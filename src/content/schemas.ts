@@ -121,3 +121,32 @@ export const codeChapter = z.object({
 
 export type CodeMission = z.infer<typeof codeMission>;
 export type CodeChapter = z.infer<typeof codeChapter>;
+
+/* ---------- Informatique (DSI) ---------- */
+
+export const itModule = z.object({
+  id: z.string(),
+  version: z.number().int(),
+  title: z.string(),
+  sheet: z.array(z.object({ title: z.string(), body: z.array(z.string()).min(1) })).min(1),
+  quiz: z
+    .array(z.object({ id: z.string(), q: z.string(), options: z.array(z.string()).min(2), answer: z.number().int(), explain: z.string() }))
+    .min(1)
+    .refine((qs) => qs.every((q) => q.answer >= 0 && q.answer < q.options.length), { message: 'réponse hors des options' }),
+  cards: z.array(z.object({ id: z.string(), front: z.string(), back: z.string() })),
+  phishing: z.array(
+    z.object({
+      id: z.string(),
+      verdict: z.enum(['phishing', 'legit']),
+      fromName: z.string(),
+      fromEmail: z.string(),
+      subject: z.string(),
+      body: z.array(z.string()),
+      link: z.object({ text: z.string(), href: z.string() }).nullable(),
+      clues: z.array(z.string()).min(1),
+    }),
+  ),
+});
+
+export type ItModule = z.infer<typeof itModule>;
+export type PhishingMail = ItModule['phishing'][number];

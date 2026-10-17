@@ -21,11 +21,6 @@ const PLANS: Record<string, { title: string; when: string; items: string[] }> = 
       'Plats faisables avec ton stock, ou avec 1 ou 2 ingrédients en plus',
     ],
   },
-  brain: {
-    title: 'Cerveau',
-    when: 'tranche 3',
-    items: ['Jeu de mémoire (séquences)', 'Calcul mental', 'Difficulté adaptative et courbe de scores'],
-  },
 };
 
 export function ComingSoon({ space }: { space: keyof typeof PLANS }) {

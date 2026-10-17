@@ -2,14 +2,16 @@
 
 Appli perso pour apprendre, bouger, cuisiner et entraîner son cerveau, en sessions courtes de 10 à 20 minutes, sur téléphone comme sur ordinateur. Elle fonctionne sans compte, sans serveur et sans IA. Toutes les données restent sur l’appareil.
 
-> **État : tranches 1 et 2 de la phase 1.** Sont prêts :
+> **État : tranches 1 à 3 de la phase 1.** Sont prêts :
 > - le noyau : écran Aujourd’hui, répétition espacée FSRS, XP, série, badges, sauvegarde ;
 > - le **chinois** : tons et 50 premiers mots HSK 1 ;
 > - le **lingala** : salutations et dialogue, contenu « à vérifier / vérifié », corrections, enregistrement au micro ;
 > - le **code** : chapitre 1 de la mission Hélios, en Python dans le navigateur ;
-> - l’**import de contenu** en CSV ou JSON.
+> - l’**import de contenu** en CSV ou JSON ;
+> - l’**informatique « DSI »**, module cybersécurité : fiche, jeu « repère le phishing », quiz et flashcards ;
+> - l’espace **Cerveau** : jeu de séquence et calcul mental adaptatifs, avec un jeu du jour.
 >
-> La cyber et le cerveau arrivent en tranche 3, le sport et la cuisine en tranche 4.
+> Le sport et la cuisine arrivent en tranche 4.
 
 ## Lancer l’appli
 
@@ -111,6 +113,18 @@ Une mission contient :
 
 Python (Pyodide, environ 13 Mo) est copié dans `public/pyodide/` et tourne dans un Web Worker. Une boucle infinie est coupée au bout de 6 s. Python n’est téléchargé qu’à la première ouverture d’une mission, puis gardé en cache pour le hors-ligne.
 
+### Informatique : `content/it/cyber.json`
+
+Un module DSI contient :
+- `sheet`, la fiche : des sections dont le texte accepte `**gras**`, `*italique*` et `` `code` `` ;
+- `quiz`, des questions dont `answer` est l’index de la bonne option ;
+- `cards`, les flashcards ajoutées à la révision une fois la fiche lue ;
+- `phishing`, les messages de la simulation.
+
+Un message de la simulation porte un `verdict` (`phishing` ou `legit`) et des `clues`, les indices révélés après la réponse. `{link}` dans `body` marque l’emplacement du lien : en le touchant, on voit sa vraie destination.
+
+Les noms d’entreprises et les domaines des messages sont fictifs.
+
 ### Importer du vocabulaire depuis l’appli
 
 *Réglages › Mon contenu* accepte un CSV (séparateur `;` ou `,`, avec en-tête) ou un JSON :
@@ -149,6 +163,8 @@ src/spaces/
   learn/chinese/    parcours chinois : leçons, tons, tracé, cartes de révision
   learn/lingala/    parcours lingala : leçons, dialogues, lexique, corrections, audio
   learn/code/       parcours code : missions, éditeur, worker Python (Pyodide)
+  learn/it/         parcours informatique : module cyber (fiche, phishing, quiz)
+  brain/            espace Cerveau : séquence, calcul mental, jeu du jour
 src/screens/        Aujourd'hui, Révisions, Progression, Réglages
 tests/              Vitest
 ```
@@ -169,6 +185,5 @@ Principes :
 
 ## Feuille de route
 
-- **Tranche 3** : cyber (fiche, quiz, flashcards, jeu « repère le phishing ») ; cerveau (mémoire, calcul mental).
 - **Tranche 4** : sport (minuteur, journal, programme débutant) ; cuisine (recettes, inventaire, liste de courses, plats faisables) ; foyer de 2 adultes + 1 enfant.
 - **Phases suivantes** : hébergement HTTPS, autres modules DSI et simulations, dialogues chinois et HSK 2–3, nutrition Ciqual, agenda des repas, méditation et tai chi, quiz façon Pix, tuteur IA optionnel, synchronisation.

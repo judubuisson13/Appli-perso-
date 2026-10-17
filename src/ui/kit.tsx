@@ -80,12 +80,17 @@ export function useKeys(handler: (key: string) => void, deps: unknown[]) {
   }, deps);
 }
 
-/** Texte avec `code` en ligne (seule mise en forme utilisée dans le contenu). */
+/** Texte avec `code`, **gras** et *italique* en ligne (seules mises en forme utilisées dans le contenu). */
 export function RichText({ text }: { text: string }) {
-  const parts = text.split(/(`[^`]+`)/g);
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*)/g);
   return (
     <>
-      {parts.map((p, i) => (p.startsWith('`') && p.endsWith('`') && p.length > 1 ? <code key={i}>{p.slice(1, -1)}</code> : <span key={i}>{p}</span>))}
+      {parts.map((p, i) => {
+        if (p.length > 2 && p.startsWith('`') && p.endsWith('`')) return <code key={i}>{p.slice(1, -1)}</code>;
+        if (p.length > 4 && p.startsWith('**') && p.endsWith('**')) return <strong key={i}>{p.slice(2, -2)}</strong>;
+        if (p.length > 2 && p.startsWith('*') && p.endsWith('*')) return <em key={i}>{p.slice(1, -1)}</em>;
+        return <span key={i}>{p}</span>;
+      })}
     </>
   );
 }

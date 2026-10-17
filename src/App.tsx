@@ -17,6 +17,9 @@ import { DialoguePage } from './spaces/learn/lingala/Dialogue';
 import { DialogueEditor, ItemEditor, Lexicon } from './spaces/learn/lingala/Lexicon';
 import { CodeHome } from './spaces/learn/code/CodeHome';
 import { Mission } from './spaces/learn/code/Mission';
+import { CyberHome, CyberQuiz, CyberSheet, ItHome } from './spaces/learn/it/ItPages';
+import { PhishingGame } from './spaces/learn/it/Phishing';
+import { BrainHome, MathGame, MemoryGame } from './spaces/brain/BrainPages';
 
 const NAV = [
   { to: '/', label: 'Aujourd’hui', icon: Sun, end: true },
@@ -29,7 +32,7 @@ const NAV = [
 function Shell() {
   const { pathname } = useLocation();
   // Pendant un exercice, on masque la navigation pour rester concentré.
-  const focus = /^\/(review|learn\/(zh|ln)\/(lesson|tones))/.test(pathname);
+  const focus = /^\/(review|learn\/(zh|ln)\/(lesson|tones)|learn\/it\/cyber\/(quiz|phishing))/.test(pathname);
   return (
     <div className="shell" style={focus ? { paddingBottom: 24, paddingLeft: 0 } : undefined}>
       {!focus && (
@@ -68,7 +71,14 @@ function Shell() {
           <Route path="/content" element={<ContentImport />} />
           <Route path="/sport" element={<ComingSoon space="sport" />} />
           <Route path="/kitchen" element={<ComingSoon space="kitchen" />} />
-          <Route path="/brain" element={<ComingSoon space="brain" />} />
+          <Route path="/learn/it" element={<ItHome />} />
+          <Route path="/learn/it/cyber" element={<CyberHome />} />
+          <Route path="/learn/it/cyber/sheet" element={<CyberSheet />} />
+          <Route path="/learn/it/cyber/quiz" element={<CyberQuiz />} />
+          <Route path="/learn/it/cyber/phishing" element={<PhishingGame />} />
+          <Route path="/brain" element={<BrainHome />} />
+          <Route path="/brain/memory" element={<MemoryGame />} />
+          <Route path="/brain/math" element={<MathGame />} />
           <Route path="*" element={<p>Page introuvable.</p>} />
         </Routes>
       </main>

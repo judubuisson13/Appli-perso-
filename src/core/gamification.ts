@@ -56,6 +56,10 @@ export interface BadgeStats {
   wordsLearned: number;
   bestToneScore: number;
   charsTraced: number;
+  missionsDone?: number;
+  bestPhishing?: number;
+  bestMemory?: number;
+  bestMath?: number;
 }
 
 export interface Badge {
@@ -78,5 +82,9 @@ export function badges(s: BadgeStats): Badge[] {
     b('hsk50', 'HSK 1 · 50 mots', '50 mots chinois appris', s.wordsLearned >= 50),
     b('tones', 'Oreille d’or', 'Au moins 90 % à un entraînement des tons', s.bestToneScore >= 0.9),
     b('trace20', 'Pinceau', '20 caractères tracés', s.charsTraced >= 20),
+    b('helios', 'Hélios sauvée', 'Terminer le chapitre 1 de la mission de code', (s.missionsDone ?? 0) >= 7),
+    b('lynx', 'Œil de lynx', 'Sans faute au jeu du phishing', (s.bestPhishing ?? 0) >= 1),
+    b('memory9', 'Mémoire d’éléphant', 'Séquence de 9 cases', (s.bestMemory ?? 0) >= 9),
+    b('math25', 'Calculateur', '25 bonnes réponses en calcul mental', (s.bestMath ?? 0) >= 25),
   ];
 }

@@ -2,23 +2,15 @@ import type { SpaceModule, TrackModule } from '../core/modules';
 import { chineseModule } from './learn/chinese/module';
 import { lingalaModule } from './learn/lingala/module';
 import { codeModule } from './learn/code/module';
+import { itModuleTrack } from './learn/it/module';
+import { brainSpace } from './brain/module';
 
 /** Parcours d'apprentissage. Ajouter un parcours = l'ajouter ici. */
 export const TRACKS: TrackModule[] = [
   chineseModule,
   lingalaModule,
   codeModule,
-  {
-    id: 'it',
-    label: 'Informatique « DSI »',
-    short: 'Info',
-    glyph: '⛨',
-    color: 'var(--brain)',
-    path: '/learn/it',
-    ready: false,
-    comingIn: 'tranche 3',
-    pitch: 'Cybersécurité d’abord : repère le phishing, quiz, flashcards.',
-  },
+  itModuleTrack,
 ];
 
 export const trackById = new Map(TRACKS.map((t) => [t.id, t]));
@@ -37,5 +29,5 @@ export const SPACES: SpaceModule[] = [
   },
   { id: 'sport', label: 'Sport', path: '/sport', ready: false },
   { id: 'kitchen', label: 'Cuisine', path: '/kitchen', ready: false },
-  { id: 'brain', label: 'Cerveau', path: '/brain', ready: false },
+  brainSpace,
 ];
