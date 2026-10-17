@@ -1,7 +1,7 @@
 // Construit un aperçu « une seule page » de l'appli (JS et CSS en ligne) dans artifact/,
 // pour le publier comme page consultable sans installer quoi que ce soit.
 import { execSync } from 'node:child_process';
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const out = 'dist-artifact';
@@ -23,4 +23,7 @@ mkdirSync('artifact', { recursive: true });
 writeFileSync('artifact/index.html', page);
 cpSync(join(out, 'hanzi'), 'artifact/hanzi', { recursive: true });
 cpSync(join(out, 'icons'), 'artifact/icons', { recursive: true });
+cpSync(join(out, 'pyodide'), 'artifact/pyodide', { recursive: true });
+// Les .zip ne sont pas servis par l'hébergeur d'aperçu : même contenu, autre extension.
+renameSync('artifact/pyodide/python_stdlib.zip', 'artifact/pyodide/python_stdlib.wasm');
 console.log(`artifact/index.html : ${(page.length / 1024).toFixed(0)} Ko`);

@@ -19,7 +19,7 @@ interface PyProxy {
   destroy?: () => void;
 }
 
-export type RunRequest = { id: number; type: 'init'; indexURL: string } | { id: number; type: 'run'; code: string; tests: { name: string; code: string }[] };
+export type RunRequest = { id: number; type: 'init'; indexURL: string; stdLibURL?: string } | { id: number; type: 'run'; code: string; tests: { name: string; code: string }[] };
 
 export interface TestResult {
   name: string;
@@ -43,8 +43,10 @@ self.onmessage = async (e: MessageEvent<RunRequest>) => {
     if (msg.type === 'init') {
       if (!py) {
         // Pyodide est servi à part (public/pyodide) : import dynamique d'une URL absolue, en worker module.
-        const mod = (await import(/* @vite-ignore */ `${msg.indexURL}pyodide.mjs`)) as { loadPyodide(o: { indexURL: string }): Promise<Pyodide> };
-        py = await mod.loadPyodide({ indexURL: msg.indexURL });
+        const mod = (await import(/* @vite-ignore */ `${msg.indexURL}pyodide.mjs`)) as {
+          loadPyodide(o: { indexURL: string; stdLibURL?: string }): Promise<Pyodide>;
+        };
+        py = await mod.loadPyodide({ indexURL: msg.indexURL, stdLibURL: msg.stdLibURL });
         py.setStdout({ batched: (s) => out.push(s) });
         py.setStderr({ batched: (s) => out.push(s) });
         py.runPython(HARNESS);

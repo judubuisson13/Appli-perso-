@@ -39,7 +39,9 @@ export function loadPython(): Promise<void> {
   if (ready) return ready;
   worker = new PyWorker();
   const indexURL = new URL(`${import.meta.env.BASE_URL}pyodide/`, location.href).href;
-  ready = call({ type: 'init', indexURL }, INIT_TIMEOUT_MS).then((r) => {
+  // L'aperçu « une seule page » ne sert pas les .zip : la bibliothèque standard y est renommée.
+  const stdLibURL = import.meta.env.MODE === 'artifact' ? `${indexURL}python_stdlib.wasm` : undefined;
+  ready = call({ type: 'init', indexURL, stdLibURL }, INIT_TIMEOUT_MS).then((r) => {
     if (r.error) {
       ready = null;
       throw new Error(r.error);
