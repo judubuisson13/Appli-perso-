@@ -42,7 +42,7 @@ export function SportHome() {
               <button
                 key={n}
                 className="btn"
-                style={{ minHeight: 36, padding: '4px 10px', ...(on ? { background: 'var(--sport)', color: 'var(--surface)', borderColor: 'var(--sport)' } : {}) }}
+                style={{ minHeight: 36, padding: '4px 10px', ...(on ? { background: 'var(--accent)', color: 'var(--accent-ink)', borderColor: 'var(--accent)' } : {}) }}
                 aria-pressed={on}
                 aria-label={`${on ? 'Retirer' : 'Ajouter'} le ${WEEK_FULL[i]}`}
                 onClick={() => void setDays(on ? data.days.filter((x) => x !== n) : [...data.days, n])}

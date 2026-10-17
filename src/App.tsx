@@ -1,5 +1,8 @@
 import { HashRouter, Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { BarChart3, Brain, Dumbbell, GraduationCap, Settings as Gear, Sun, UtensilsCrossed } from 'lucide-react';
+import { useEffect } from 'react';
+import { AnimatePresence, MotionConfig, motion } from 'motion/react';
+import { Logo } from './ui/Logo';
 import { Today } from './screens/Today';
 import { Review } from './screens/Review';
 import { Progress } from './screens/Progress';
@@ -38,7 +41,10 @@ const NAV = [
 ];
 
 function Shell() {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const { pathname } = location;
+  // Chaque écran s'ouvre en haut de page.
+  useEffect(() => window.scrollTo({ top: 0 }), [pathname]);
   // Pendant un exercice, on masque la navigation pour rester concentré.
   const focus = /^\/(review|learn\/(zh|ln)\/(lesson|tones)|learn\/it\/cyber\/(quiz|phishing)|sport\/session)/.test(pathname);
   return (
@@ -46,7 +52,7 @@ function Shell() {
       {!focus && (
         <header className="topbar">
           <Link to="/" className="brand">
-            <img src="icons/icon.svg" alt="" /> Mon espace
+            <Logo /> Mon espace
           </Link>
           <NavLink to="/progress" className={({ isActive }) => `icon-btn ${isActive ? 'active' : ''}`} aria-label="Progression">
             <BarChart3 size={20} />
@@ -57,7 +63,16 @@ function Shell() {
         </header>
       )}
       <main className="page">
-        <Routes>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={pathname}
+            className="route"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6, transition: { duration: 0.18 } }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+        <Routes location={location}>
           <Route path="/" element={<Today />} />
           <Route path="/review" element={<Review />} />
           <Route path="/progress" element={<Progress />} />
@@ -99,13 +114,27 @@ function Shell() {
           <Route path="/brain/math" element={<MathGame />} />
           <Route path="*" element={<p>Page introuvable.</p>} />
         </Routes>
+          </motion.div>
+        </AnimatePresence>
       </main>
       {!focus && (
         <nav className="bottomnav" aria-label="Espaces">
           {NAV.map(({ to, label, icon: Icon, end }) => (
             <NavLink key={to} to={to} end={end} className={({ isActive }) => (isActive ? 'active' : '')}>
-              <Icon size={22} />
-              {label}
+              {({ isActive }) => (
+                <>
+                  {isActive && <motion.span layoutId="nav-pill" className="nav-pill" transition={{ type: 'spring', stiffness: 380, damping: 34 }} />}
+                  <motion.span
+                    animate={isActive ? { y: -1, scale: 1.12, rotate: [0, -10, 6, 0] } : { y: 0, scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    whileTap={{ scale: 0.85 }}
+                    style={{ display: 'grid' }}
+                  >
+                    <Icon size={21} strokeWidth={1.6} />
+                  </motion.span>
+                  <span>{label}</span>
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -116,8 +145,10 @@ function Shell() {
 
 export function App() {
   return (
-    <HashRouter>
-      <Shell />
-    </HashRouter>
+    <MotionConfig reducedMotion="user">
+      <HashRouter>
+        <Shell />
+      </HashRouter>
+    </MotionConfig>
   );
 }

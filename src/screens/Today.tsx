@@ -9,7 +9,7 @@ import { streakInfo, XP } from '../core/gamification';
 import { OFF_APP, resolveToday, reviewItem } from '../core/today';
 import type { TodayItem } from '../core/modules';
 import { useSettings } from '../core/settings';
-import { ProgressBar } from '../ui/kit';
+import { CountUp, GoalRing } from '../ui/motion';
 import { SPACES, TRACKS } from '../spaces/registry';
 
 async function loadToday() {
@@ -44,45 +44,56 @@ export function Today() {
 
   return (
     <div className="stack">
-      <section className="card">
-        <div className="hero">
-          <div>
-            <p className="muted small" style={{ margin: 0, textTransform: 'capitalize' }}>
-              {dateLabel}
-            </p>
-            <h1 style={{ margin: 0 }}>{greeting()} !</h1>
-          </div>
-          <span className="chip" title="Série de jours" style={{ fontSize: '1rem' }}>
-            <Flame size={18} color={data.streak.doneToday ? 'var(--accent)' : undefined} /> {data.streak.current}
+      <section className="hero" style={{ padding: '12px 0 4px' }}>
+        <div className="stack" style={{ gap: 6, minWidth: 0 }}>
+          <span className="eyebrow">{dateLabel}</span>
+          <h1 style={{ margin: 0, fontSize: 'clamp(2.6rem, 11vw, 3.6rem)' }}>{greeting()}.</h1>
+          <span className={`flame ${data.streak.doneToday ? 'lit' : ''}`} title="Série de jours">
+            <Flame size={22} strokeWidth={1.5} />
+            <CountUp value={data.streak.current} />
+            <span className="small muted" style={{ fontFamily: 'var(--font-body)' }}>
+              jour{data.streak.current > 1 ? 's' : ''} de suite
+            </span>
           </span>
         </div>
-        <div className="stat-row">
-          <div className="stat">
-            <b>{Math.round(data.remaining)} min</b>
-            <span>restantes estimées</span>
-          </div>
-          <div className="stat">
-            <b>{Math.round(data.minutesDone)} / {dailyGoalMinutes}</b>
-            <span>min · objectif</span>
-          </div>
-          <div className="stat">
-            <b>+{data.xpToday}</b>
-            <span>XP aujourd’hui</span>
-          </div>
-        </div>
-        <div style={{ marginTop: 12 }} className="stack">
-          <div className="row small muted" style={{ gap: 6 }}>
-            <Target size={16} />
-            {goal >= 1 ? 'Objectif du jour atteint. Le reste est du bonus.' : `Objectif : ${dailyGoalMinutes} minutes de pratique`}
-          </div>
-          <ProgressBar value={goal} label="Objectif du jour" />
-        </div>
-        {!data.streak.doneToday && data.streak.current > 0 && (
-          <p className="small muted" style={{ margin: '10px 0 0' }}>
-            Une seule activité aujourd’hui suffit pour prolonger ta série de {data.streak.current} jour{data.streak.current > 1 ? 's' : ''}.
-          </p>
-        )}
+        <GoalRing value={goal}>
+          <span>
+            <b>
+              <CountUp value={Math.round(data.minutesDone)} />
+            </b>
+            <span>/ {dailyGoalMinutes} min</span>
+          </span>
+        </GoalRing>
       </section>
+      <div className="stat-row" style={{ marginTop: 0 }}>
+        <div className="stat">
+          <b>
+            <CountUp value={Math.round(data.remaining)} />
+          </b>
+          <span>min restantes</span>
+        </div>
+        <div className="stat">
+          <b>
+            <CountUp value={data.items.filter((i) => i.done).length} />
+            <span style={{ color: 'var(--faint)', fontSize: '1.1rem' }}> / {data.items.length}</span>
+          </b>
+          <span>fait</span>
+        </div>
+        <div className="stat">
+          <b>
+            +<CountUp value={data.xpToday} />
+          </b>
+          <span>XP du jour</span>
+        </div>
+      </div>
+      <p className="small muted" style={{ margin: 0, display: 'flex', gap: 8, alignItems: 'center' }}>
+        <Target size={15} color="var(--accent)" />
+        {goal >= 1
+          ? 'Objectif du jour atteint. Le reste est du bonus.'
+          : !data.streak.doneToday && data.streak.current > 0
+            ? `Une activité suffit pour prolonger ta série de ${data.streak.current} jour${data.streak.current > 1 ? 's' : ''}.`
+            : `Objectif : ${dailyGoalMinutes} minutes de pratique.`}
+      </p>
 
       <h2 className="section-title">Au programme</h2>
       <div className="stack">

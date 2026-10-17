@@ -11,7 +11,7 @@ export interface Settings {
 
 export const DEFAULT_SETTINGS: Settings = {
   dailyGoalMinutes: 15,
-  theme: 'system',
+  theme: 'dark',
   speechRate: 0.8,
   speakExercises: true,
   reviewBatch: 40,
@@ -35,8 +35,9 @@ export function useSettings(): Settings {
 
 export function applyTheme(theme: Settings['theme']) {
   const root = document.documentElement;
-  if (theme === 'system') root.removeAttribute('data-theme');
-  else root.setAttribute('data-theme', theme);
+  // Le noir est le thème de base ; seul le clair (ivoire) pose un attribut.
+  if (theme === 'light') root.setAttribute('data-theme', 'light');
+  else root.removeAttribute('data-theme');
   try {
     localStorage.setItem('theme', theme);
   } catch {

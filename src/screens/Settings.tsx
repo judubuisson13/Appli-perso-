@@ -66,10 +66,9 @@ export function Settings() {
       <div className="card stack">
         <label className="field">
           Thème
-          <select value={s.theme} onChange={(e) => void setSetting('theme', e.target.value as S['theme'])}>
-            <option value="system">Suivre l’appareil</option>
-            <option value="light">Clair</option>
-            <option value="dark">Sombre</option>
+          <select id="theme" value={s.theme === 'light' ? 'light' : 'dark'} onChange={(e) => void setSetting('theme', e.target.value as S['theme'])}>
+            <option value="dark">Noir (par défaut)</option>
+            <option value="light">Ivoire</option>
           </select>
         </label>
       </div>

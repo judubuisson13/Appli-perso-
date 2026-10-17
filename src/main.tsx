@@ -4,6 +4,9 @@ import { registerSW } from 'virtual:pwa-register';
 import { App } from './App';
 import { applyTheme, getSettings } from './core/settings';
 import { hydrateUserWords } from './spaces/learn/chinese/content';
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+import '@fontsource-variable/manrope';
 import './styles.css';
 
 registerSW({ immediate: true });

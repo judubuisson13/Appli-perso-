@@ -54,14 +54,20 @@ export function Feedback({ ok, children }: { ok: boolean; children: ReactNode })
 
 export function PageTitle({ title, sub, back }: { title: string; sub?: string; back?: string }) {
   return (
-    <header style={{ marginBottom: 12 }}>
+    <header style={{ margin: '8px 0 8px' }} className="stack">
       {back && (
-        <Link to={back} className="small muted" style={{ textDecoration: 'none' }}>
+        <Link to={back} className="eyebrow" style={{ textDecoration: 'none', alignSelf: 'flex-start' }}>
           ← Retour
         </Link>
       )}
-      <h1 style={{ marginTop: back ? 6 : 0 }}>{title}</h1>
-      {sub && <p className="muted">{sub}</p>}
+      <div>
+        <h1 style={{ margin: 0 }}>{title}</h1>
+        {sub && (
+          <p className="muted" style={{ margin: '8px 0 0', maxWidth: '58ch' }}>
+            {sub}
+          </p>
+        )}
+      </div>
     </header>
   );
 }

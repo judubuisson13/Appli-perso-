@@ -16,10 +16,13 @@
     "build:artifact": "node scripts/prepare-assets.mjs && node scripts/build-artifact.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/cormorant-garamond": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
     "dexie": "^4.4.6",
     "dexie-react-hooks": "^4.4.0",
     "hanzi-writer": "^3.7.3",
     "lucide-react": "^1.59.0",
+    "motion": "^14.3.0",
     "pyodide": "^314.0.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
