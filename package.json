@@ -4,21 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-hanzi.mjs",
+    "predev": "node scripts/prepare-assets.mjs",
     "dev": "vite",
     "dev:phone": "vite --host",
-    "prebuild": "node scripts/copy-hanzi.mjs",
+    "prebuild": "node scripts/prepare-assets.mjs",
     "build": "tsc -p . && vite build",
     "preview": "vite preview --host",
     "typecheck": "tsc -p .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "build:artifact": "node scripts/prepare-assets.mjs && node scripts/build-artifact.mjs"
   },
   "dependencies": {
     "dexie": "^4.4.6",
     "dexie-react-hooks": "^4.4.0",
     "hanzi-writer": "^3.7.3",
     "lucide-react": "^1.59.0",
+    "pyodide": "^314.0.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.4",

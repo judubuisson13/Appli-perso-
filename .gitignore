@@ -2,5 +2,8 @@ node_modules
 dist
 dev-dist
 public/hanzi
+public/pyodide
 *.log
 .DS_Store
+dist-artifact
+artifact

@@ -3,11 +3,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   base: './',
   plugins: [
     react(),
     VitePWA({
+      // Aperçu sous forme d'une seule page (artifact) : pas de service worker.
+      disable: mode === 'artifact',
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.svg', 'icons/*.png'],
       manifest: {
@@ -27,12 +29,23 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
+        // Python (≈ 13 Mo) n'est mis en cache qu'à la première ouverture du parcours Code.
+        globIgnores: ['pyodide/**'],
+        runtimeCaching: [
+          {
+            urlPattern: /\/pyodide\//,
+            handler: 'CacheFirst',
+            options: { cacheName: 'pyodide', expiration: { maxEntries: 20 } },
+          },
+        ],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
     }),
   ],
+  // Worker Python en module ES : Pyodide n'accepte plus les workers classiques.
+  worker: { format: 'es' },
   test: {
     environment: 'node',
     setupFiles: ['tests/setup.ts'],
   },
-});
+}));

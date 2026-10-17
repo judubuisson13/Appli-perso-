@@ -691,3 +691,107 @@ input[type='range'] {
     animation: none !important;
   }
 }
+
+/* ---------- Tranche 2 ---------- */
+:root {
+  --warn: #9a6200;
+  --warn-bg: #fbefd5;
+  --code-bg: #f1efe8;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --warn: #f2b84b;
+    --warn-bg: #3a2e14;
+    --code-bg: #0c1014;
+  }
+}
+:root[data-theme='dark'] {
+  --warn: #f2b84b;
+  --warn-bg: #3a2e14;
+  --code-bg: #0c1014;
+}
+.chip.warn {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+.ln-text {
+  font-size: clamp(1.8rem, 9vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  width: 100%;
+}
+.code-editor {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  background: var(--code-bg);
+  min-height: 220px;
+  tab-size: 4;
+  white-space: pre;
+  overflow-x: auto;
+  resize: vertical;
+}
+.console {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  background: var(--code-bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  max-height: 220px;
+  overflow: auto;
+}
+.story {
+  border-left: 3px solid var(--learn);
+  padding: 4px 0 4px 12px;
+  font-style: italic;
+}
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+.test-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.test-row .ok {
+  color: var(--ok);
+}
+.test-row .bad {
+  color: var(--bad);
+}
+.bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.bubble.me {
+  align-self: flex-end;
+  background: color-mix(in srgb, var(--sport) 16%, var(--surface));
+}
+.filter-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.filter-row button[aria-pressed='true'] {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}

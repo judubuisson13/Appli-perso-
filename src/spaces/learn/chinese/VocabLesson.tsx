@@ -10,7 +10,7 @@ import { canRecognize, listen } from '../../../core/speech';
 import { useSettings } from '../../../core/settings';
 import type { Grade4 } from '../../../core/srs';
 import { AudioButton, ExerciseHeader, Feedback, useKeys } from '../../../ui/kit';
-import { hsk1, lessonById, lessonWords, TRACK, wordsById } from './content';
+import { lessonById, lessonWords, TRACK, wordsById } from './content';
 import { buildLesson, GRADED, gradeFromMistakes, mistakesByWord, type Exercise } from './lesson';
 import { HanziTrace } from './HanziTrace';
 import { Hanzi, Pinyin, WordBlock } from './ui';
@@ -23,7 +23,7 @@ export function VocabLesson() {
   const settings = useSettings();
   const speakOk = settings.speakExercises && canRecognize();
   const initial = useMemo(
-    () => buildLesson(lessonWords(lessonId), hsk1.words, { speak: speakOk, trace: true }, Math.random),
+    () => buildLesson(lessonWords(lessonId), [...wordsById.values()], { speak: speakOk, trace: true }, Math.random),
     // Les exercices oraux dépendent des réglages au moment d'ouvrir la leçon.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [lessonId],

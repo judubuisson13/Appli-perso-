@@ -79,3 +79,13 @@ export function useKeys(handler: (key: string) => void, deps: unknown[]) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }
+
+/** Texte avec `code` en ligne (seule mise en forme utilisée dans le contenu). */
+export function RichText({ text }: { text: string }) {
+  const parts = text.split(/(`[^`]+`)/g);
+  return (
+    <>
+      {parts.map((p, i) => (p.startsWith('`') && p.endsWith('`') && p.length > 1 ? <code key={i}>{p.slice(1, -1)}</code> : <span key={i}>{p}</span>))}
+    </>
+  );
+}

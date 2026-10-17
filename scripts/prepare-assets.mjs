@@ -1,5 +1,6 @@
-// Copie dans public/hanzi/ les données de tracé (hanzi-writer-data) des caractères
-// utilisés par le contenu chinois, pour que le tracé marche hors ligne.
+// Prépare les fichiers servis tels quels, pour que l'appli marche hors ligne :
+// - public/hanzi/ : données de tracé (hanzi-writer-data) des caractères du contenu chinois ;
+// - public/pyodide/ : interpréteur Python (Pyodide) du parcours Code.
 import { readFileSync, readdirSync, mkdirSync, copyFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -26,3 +27,11 @@ for (const ch of chars) {
   } else missing.push(ch);
 }
 console.log(`hanzi: ${copied} caractères copiés${missing.length ? `, absents : ${missing.join('')}` : ''}`);
+
+const pyOut = join(root, 'public', 'pyodide');
+mkdirSync(pyOut, { recursive: true });
+const pySrc = join(root, 'node_modules', 'pyodide');
+for (const f of ['pyodide.js', 'pyodide.mjs', 'pyodide.asm.mjs', 'pyodide.asm.wasm', 'python_stdlib.zip', 'pyodide-lock.json']) {
+  copyFileSync(join(pySrc, f), join(pyOut, f));
+}
+console.log('pyodide : interpréteur copié');

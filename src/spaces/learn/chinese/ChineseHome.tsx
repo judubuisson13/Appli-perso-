@@ -4,7 +4,7 @@ import { Brush, Ear, Layers } from 'lucide-react';
 import { db } from '../../../core/db';
 import { levelInfo } from '../../../core/gamification';
 import { PageTitle, ProgressBar } from '../../../ui/kit';
-import { hsk1, TRACK } from './content';
+import { hsk1, lessonById, TRACK, wordsById } from './content';
 
 export function ChineseHome() {
   const data = useLiveQuery(async () => {
@@ -64,9 +64,9 @@ export function ChineseHome() {
         </Link>
       </div>
 
-      <h2 className="section-title">Leçons {hsk1.level}</h2>
+      <h2 className="section-title">Leçons</h2>
       <div className="stack">
-        {hsk1.lessons.map((l, i) => {
+        {[...lessonById.values()].map((l, i) => {
           const p = data.done.get(l.id);
           return (
             <Link key={l.id} to={`/learn/zh/lesson/${l.id}`} className="card lesson-row">
@@ -76,7 +76,7 @@ export function ChineseHome() {
                 <br />
                 <span className="muted small" lang="zh-CN">
                   {l.words
-                    .map((id) => hsk1.words.find((w) => w.id === id)!.hanzi)
+                    .map((id) => wordsById.get(id)?.hanzi)
                     .join(' ')}
                 </span>
               </span>

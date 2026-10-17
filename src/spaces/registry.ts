@@ -1,31 +1,13 @@
 import type { SpaceModule, TrackModule } from '../core/modules';
 import { chineseModule } from './learn/chinese/module';
+import { lingalaModule } from './learn/lingala/module';
+import { codeModule } from './learn/code/module';
 
 /** Parcours d'apprentissage. Ajouter un parcours = l'ajouter ici. */
 export const TRACKS: TrackModule[] = [
   chineseModule,
-  {
-    id: 'ln',
-    label: 'Lingala',
-    short: 'Lingala',
-    glyph: 'Ln',
-    color: 'var(--sport)',
-    path: '/learn/ln',
-    ready: false,
-    comingIn: 'tranche 2',
-    pitch: 'Salutations, famille, nombres. Contenu vérifiable et audio enregistré par toi.',
-  },
-  {
-    id: 'code',
-    label: 'Code : la mission',
-    short: 'Code',
-    glyph: '</>',
-    color: 'var(--learn)',
-    path: '/learn/code',
-    ready: false,
-    comingIn: 'tranche 2',
-    pitch: 'Sauve un système en panne, chapitre par chapitre, en Python dans le navigateur.',
-  },
+  lingalaModule,
+  codeModule,
   {
     id: 'it',
     label: 'Informatique « DSI »',

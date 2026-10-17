@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Download, Upload, Volume2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Download, FileUp, Upload, Volume2 } from 'lucide-react';
 import { db, TABLES } from '../core/db';
 import { downloadBackup, importBackup } from '../core/backup';
 import { setSetting, useSettings, type Settings as S } from '../core/settings';
@@ -18,8 +19,11 @@ export function Settings() {
     void navigator.storage?.persisted?.().then(setPersisted);
   }, []);
 
+  const [pendingImport, setPendingImport] = useState<File | null>(null);
+  const [confirmReset, setConfirmReset] = useState(false);
+
   const onImport = async (f: File) => {
-    if (!confirm('Importer cette sauvegarde remplacera toutes tes données actuelles. Continuer ?')) return;
+    setPendingImport(null);
     try {
       const { rows } = await importBackup(JSON.parse(await f.text()));
       setMsg(`Sauvegarde importée (${rows} éléments).`);
@@ -29,7 +33,7 @@ export function Settings() {
   };
 
   const reset = async () => {
-    if (!confirm('Effacer toutes tes données (progression, cartes, réglages) ? Pense à exporter une sauvegarde avant.')) return;
+    setConfirmReset(false);
     await db.transaction('rw', TABLES.map((t) => db.table(t)), async () => {
       for (const t of TABLES) await db.table(t).clear();
     });
@@ -91,6 +95,16 @@ export function Settings() {
         )}
       </div>
 
+      <h2 className="section-title">Contenu</h2>
+      <Link to="/content" className="card lesson-row">
+        <FileUp size={22} />
+        <span>
+          <b>Mon contenu</b>
+          <br />
+          <span className="muted small">Importer du vocabulaire lingala ou chinois (CSV, JSON)</span>
+        </span>
+      </Link>
+
       <h2 className="section-title">Mes données</h2>
       <div className="card stack">
         <p className="small muted" style={{ margin: 0 }}>
@@ -111,19 +125,46 @@ export function Settings() {
             hidden
             onChange={(e) => {
               const f = e.target.files?.[0];
-              if (f) void onImport(f);
+              if (f) setPendingImport(f);
               e.target.value = '';
             }}
           />
         </div>
+        {pendingImport && (
+          <div className="notice stack">
+            <span>Importer « {pendingImport.name} » remplacera toutes tes données actuelles.</span>
+            <div className="row">
+              <button className="btn primary" onClick={() => void onImport(pendingImport)}>
+                Remplacer mes données
+              </button>
+              <button className="btn" onClick={() => setPendingImport(null)}>
+                Annuler
+              </button>
+            </div>
+          </div>
+        )}
         {msg && (
           <p className="notice" role="status">
             {msg}
           </p>
         )}
-        <button className="btn danger" onClick={() => void reset()}>
-          Tout effacer
-        </button>
+        {confirmReset ? (
+          <div className="notice stack">
+            <span>Effacer progression, cartes, enregistrements et réglages ? Pense à exporter une sauvegarde avant.</span>
+            <div className="row">
+              <button className="btn danger" onClick={() => void reset()}>
+                Oui, tout effacer
+              </button>
+              <button className="btn" onClick={() => setConfirmReset(false)}>
+                Annuler
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button className="btn danger" onClick={() => setConfirmReset(true)}>
+            Tout effacer
+          </button>
+        )}
       </div>
     </div>
   );

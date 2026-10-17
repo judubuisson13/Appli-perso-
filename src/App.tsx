@@ -10,6 +10,13 @@ import { VocabLesson } from './spaces/learn/chinese/VocabLesson';
 import { ToneDrill } from './spaces/learn/chinese/ToneDrill';
 import { TracePage } from './spaces/learn/chinese/TracePage';
 import { ComingSoon } from './spaces/ComingSoon';
+import { ContentImport } from './screens/ContentImport';
+import { LingalaHome } from './spaces/learn/lingala/LingalaHome';
+import { LingalaLesson } from './spaces/learn/lingala/LingalaLesson';
+import { DialoguePage } from './spaces/learn/lingala/Dialogue';
+import { DialogueEditor, ItemEditor, Lexicon } from './spaces/learn/lingala/Lexicon';
+import { CodeHome } from './spaces/learn/code/CodeHome';
+import { Mission } from './spaces/learn/code/Mission';
 
 const NAV = [
   { to: '/', label: 'Aujourd’hui', icon: Sun, end: true },
@@ -22,7 +29,7 @@ const NAV = [
 function Shell() {
   const { pathname } = useLocation();
   // Pendant un exercice, on masque la navigation pour rester concentré.
-  const focus = /^\/(review|learn\/zh\/(lesson|tones))/.test(pathname);
+  const focus = /^\/(review|learn\/(zh|ln)\/(lesson|tones))/.test(pathname);
   return (
     <div className="shell" style={focus ? { paddingBottom: 24, paddingLeft: 0 } : undefined}>
       {!focus && (
@@ -50,6 +57,15 @@ function Shell() {
           <Route path="/learn/zh/tones" element={<ToneDrill />} />
           <Route path="/learn/zh/trace" element={<TracePage />} />
           <Route path="/learn/zh/trace/:char" element={<TracePage />} />
+          <Route path="/learn/ln" element={<LingalaHome />} />
+          <Route path="/learn/ln/lesson/:lessonId" element={<LingalaLesson />} />
+          <Route path="/learn/ln/dialogue/:dialogueId" element={<DialoguePage />} />
+          <Route path="/learn/ln/dialogue/:dialogueId/edit" element={<DialogueEditor />} />
+          <Route path="/learn/ln/lexicon" element={<Lexicon />} />
+          <Route path="/learn/ln/item/:itemId" element={<ItemEditor />} />
+          <Route path="/learn/code" element={<CodeHome />} />
+          <Route path="/learn/code/:missionId" element={<Mission />} />
+          <Route path="/content" element={<ContentImport />} />
           <Route path="/sport" element={<ComingSoon space="sport" />} />
           <Route path="/kitchen" element={<ComingSoon space="kitchen" />} />
           <Route path="/brain" element={<ComingSoon space="brain" />} />

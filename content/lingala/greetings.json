@@ -1,0 +1,247 @@
+{
+  "id": "ln-greetings",
+  "version": 1,
+  "title": "Salutations",
+  "items": [
+    {
+      "id": "ln-mbote",
+      "ln": "Mbote",
+      "fr": "Bonjour, salut",
+      "notes": "Se dit à toute heure de la journée.",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-mbote-na-yo",
+      "ln": "Mbote na yo",
+      "fr": "Bonjour à toi",
+      "notes": "Réponse habituelle à « mbote ». yo = toi.",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-mbote-na-bino",
+      "ln": "Mbote na bino",
+      "fr": "Bonjour à vous",
+      "notes": "bino = vous (plusieurs personnes, ou par respect).",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-sango-nini",
+      "ln": "Sango nini?",
+      "fr": "Quoi de neuf ?",
+      "notes": "Littéralement « quelle nouvelle ? ».",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-sango-te",
+      "ln": "Sango te",
+      "fr": "Rien de spécial",
+      "notes": "Littéralement « pas de nouvelle ».",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-ozali-malamu",
+      "ln": "Ozali malamu?",
+      "fr": "Tu vas bien ?",
+      "notes": "o- = tu ; -zali = être.",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-nazali-malamu",
+      "ln": "Nazali malamu",
+      "fr": "Je vais bien",
+      "notes": "na- = je.",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-malamu",
+      "ln": "Malamu",
+      "fr": "Bien, bon",
+      "category": "salutations",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-matondo",
+      "ln": "Matondo",
+      "fr": "Merci",
+      "category": "politesse",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-matondo-mingi",
+      "ln": "Matondo mingi",
+      "fr": "Merci beaucoup",
+      "notes": "mingi = beaucoup.",
+      "category": "politesse",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-limbisa-ngai",
+      "ln": "Limbisa ngai",
+      "fr": "Pardonne-moi, excuse-moi",
+      "notes": "ngai = moi.",
+      "category": "politesse",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-ee",
+      "ln": "Ee",
+      "fr": "Oui",
+      "category": "politesse",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-te",
+      "ln": "Te",
+      "fr": "Non",
+      "notes": "Placé après le verbe, te sert aussi à la négation.",
+      "category": "politesse",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-boyei-malamu",
+      "ln": "Boyei malamu",
+      "fr": "Bienvenue (à vous)",
+      "notes": "Littéralement « vous êtes bien venus ».",
+      "category": "politesse",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-kombo-na-yo-nani",
+      "ln": "Kombo na yo nani?",
+      "fr": "Comment tu t'appelles ?",
+      "notes": "Littéralement « ton nom, qui ? ».",
+      "category": "presentation",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-kombo-na-ngai",
+      "ln": "Kombo na ngai …",
+      "fr": "Je m'appelle …",
+      "notes": "Littéralement « mon nom … ».",
+      "category": "presentation",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-tikala-malamu",
+      "ln": "Tikala malamu",
+      "fr": "Au revoir (dit par celui qui part)",
+      "notes": "Littéralement « reste bien ».",
+      "category": "presentation",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-kende-malamu",
+      "ln": "Kende malamu",
+      "fr": "Au revoir (dit à celui qui part)",
+      "notes": "Littéralement « va bien ».",
+      "category": "presentation",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-tokomonana",
+      "ln": "Tokomonana",
+      "fr": "À plus tard, on se reverra",
+      "category": "presentation",
+      "status": "to-verify"
+    },
+    {
+      "id": "ln-butu-malamu",
+      "ln": "Butu malamu",
+      "fr": "Bonne nuit",
+      "notes": "butu = nuit.",
+      "category": "presentation",
+      "status": "to-verify"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "ln-l1",
+      "title": "Bonjour, ça va ?",
+      "items": [
+        "ln-mbote",
+        "ln-mbote-na-yo",
+        "ln-mbote-na-bino",
+        "ln-sango-nini",
+        "ln-sango-te",
+        "ln-ozali-malamu",
+        "ln-nazali-malamu",
+        "ln-malamu"
+      ]
+    },
+    {
+      "id": "ln-l2",
+      "title": "Politesse",
+      "items": [
+        "ln-matondo",
+        "ln-matondo-mingi",
+        "ln-limbisa-ngai",
+        "ln-ee",
+        "ln-te",
+        "ln-boyei-malamu"
+      ]
+    },
+    {
+      "id": "ln-l3",
+      "title": "Se présenter, se quitter",
+      "items": [
+        "ln-kombo-na-yo-nani",
+        "ln-kombo-na-ngai",
+        "ln-tikala-malamu",
+        "ln-kende-malamu",
+        "ln-tokomonana",
+        "ln-butu-malamu"
+      ]
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "ln-d1",
+      "title": "Rencontre dans la rue",
+      "status": "to-verify",
+      "lines": [
+        {
+          "speaker": "A",
+          "ln": "Mbote!",
+          "fr": "Salut !"
+        },
+        {
+          "speaker": "B",
+          "ln": "Mbote na yo.",
+          "fr": "Salut à toi."
+        },
+        {
+          "speaker": "A",
+          "ln": "Sango nini?",
+          "fr": "Quoi de neuf ?"
+        },
+        {
+          "speaker": "B",
+          "ln": "Sango te. Yo, ozali malamu?",
+          "fr": "Rien de spécial. Et toi, tu vas bien ?"
+        },
+        {
+          "speaker": "A",
+          "ln": "Ee, nazali malamu. Matondo.",
+          "fr": "Oui, je vais bien. Merci."
+        },
+        {
+          "speaker": "B",
+          "ln": "Tikala malamu!",
+          "fr": "Au revoir ! (B s'en va)"
+        },
+        {
+          "speaker": "A",
+          "ln": "Kende malamu. Tokomonana!",
+          "fr": "Au revoir. À plus tard !"
+        }
+      ]
+    }
+  ]
+}

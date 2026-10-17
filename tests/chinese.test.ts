@@ -6,7 +6,7 @@ import { hsk1, toneSyllables, lessonWords } from '../src/spaces/learn/chinese/co
 import { buildLesson, gradeFromMistakes, mistakesByWord } from '../src/spaces/learn/chinese/lesson';
 import { mergeStats, patternOptions, weightedPick } from '../src/spaces/learn/chinese/toneDrill';
 import { seeded } from '../src/core/random';
-import { answer, createQueue, isFinished, REQUEUE_GAP } from '../src/core/queue';
+import { answer, createQueue, isFinished, MAX_REQUEUES, REQUEUE_GAP } from '../src/core/queue';
 import { zhDeck } from '../src/content/schemas';
 
 describe('pinyin', () => {
@@ -99,6 +99,12 @@ describe('file d’exercices', () => {
     expect(isFinished(q)).toBe(true);
     expect(q.firstTry).toBe(1);
     expect(q.answered).toBe(3);
+  });
+  it('arrête de reproposer un exercice après plusieurs échecs', () => {
+    let q = createQueue(['a']);
+    for (let i = 0; i < 10 && !isFinished(q); i++) q = answer(q, 'a', false);
+    expect(isFinished(q)).toBe(true);
+    expect(q.mistakes.a).toBe(1 + MAX_REQUEUES);
   });
   it('un exercice non noté ne compte pas', () => {
     const q = answer(createQueue(['a']), 'a', false, false);

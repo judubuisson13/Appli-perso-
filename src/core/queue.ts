@@ -15,6 +15,8 @@ export function createQueue<T>(items: T[]): QueueState<T> {
 }
 
 export const REQUEUE_GAP = 3;
+/** Au-delà, on montre la réponse et on passe : pas de boucle sans fin sur un exercice bloquant. */
+export const MAX_REQUEUES = 2;
 
 export function answer<T>(q: QueueState<T>, key: string, correct: boolean, graded = true): QueueState<T> {
   const item = q.items[q.index];
@@ -25,8 +27,8 @@ export function answer<T>(q: QueueState<T>, key: string, correct: boolean, grade
     answered++;
     const already = mistakes[key] ?? 0;
     if (correct && already === 0) firstTry++;
-    if (!correct) {
-      mistakes[key] = already + 1;
+    if (!correct) mistakes[key] = already + 1;
+    if (!correct && already < MAX_REQUEUES) {
       const at = Math.min(items.length, q.index + 1 + REQUEUE_GAP);
       items.splice(at, 0, item);
     }

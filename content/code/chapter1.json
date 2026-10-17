@@ -1,0 +1,287 @@
+{
+  "id": "ch1",
+  "version": 1,
+  "title": "Réveil de la station Hélios",
+  "language": "python",
+  "intro": "Une mission en 7 étapes pour remettre en route une station orbitale, et réviser au passage les bases de Python : affichage, fonctions, conditions, boucles, chaînes, dictionnaires, tri.",
+  "outro": "Rapport envoyé. Sur Terre, quelqu’un répond : « Bien joué. Mais la mémoire centrale d’Hélios est corrompue… » Suite au chapitre 2 : structures de données.",
+  "missions": [
+    {
+      "id": "m1",
+      "title": "Allumer la console",
+      "skill": "Afficher du texte",
+      "story": "03 h 12. Une alarme te tire du sommeil. La station orbitale Hélios ne répond plus et tu es l’ingénieur·e de garde. Seule la console de secours fonctionne, et elle n’accepte que du Python. Premier réflexe : vérifier qu’elle t’entend.",
+      "task": "Affiche exactement deux lignes : `Console active`, puis `Diagnostic lancé`.",
+      "starter": "# Affiche les deux lignes demandées\n",
+      "tests": [
+        {
+          "name": "Deux lignes exactement",
+          "code": "lignes = sortie.strip().splitlines()\nassert len(lignes) == 2, f\"J'attends 2 lignes, j'en vois {len(lignes)}.\""
+        },
+        {
+          "name": "Le texte est exact",
+          "code": "assert sortie.strip().splitlines() == ['Console active', 'Diagnostic lancé'], 'Vérifie les majuscules et les accents.'"
+        }
+      ],
+      "hints": [
+        "`print(...)` affiche du texte, une ligne par appel.",
+        "Le texte va entre guillemets : `print(\"Console active\")`."
+      ],
+      "solution": "print(\"Console active\")\nprint(\"Diagnostic lancé\")\n",
+      "cards": [
+        {
+          "id": "m1-0",
+          "front": "Combien de lignes affichent deux appels à `print` ?",
+          "back": "Deux : chaque `print` termine par un retour à la ligne."
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "Bilan énergie",
+      "skill": "Fonctions et listes",
+      "story": "La console s’allume. Hélios tourne sur ses batteries de secours. Avant de rallumer quoi que ce soit, il faut savoir combien d’énergie il reste. Chaque cellule renvoie sa charge en kWh.",
+      "task": "Écris la fonction `energie_totale(cellules)` qui reçoit une liste de charges et renvoie leur somme. Une liste vide vaut 0.",
+      "starter": "def energie_totale(cellules):\n    # à toi de jouer\n    pass\n",
+      "tests": [
+        {
+          "name": "Trois cellules",
+          "code": "assert energie_totale([12, 8, 30]) == 50, 'energie_totale([12, 8, 30]) devrait valoir 50.'"
+        },
+        {
+          "name": "Aucune cellule",
+          "code": "assert energie_totale([]) == 0, 'Une liste vide doit donner 0.'"
+        },
+        {
+          "name": "Nombres à virgule",
+          "code": "assert energie_totale([2.5, 2.5]) == 5, 'energie_totale([2.5, 2.5]) devrait valoir 5.'"
+        }
+      ],
+      "hints": [
+        "Une fonction renvoie son résultat avec `return`. `pass` ne renvoie rien (donc `None`).",
+        "Python sait déjà additionner tous les éléments d’une liste : regarde du côté de `sum(...)`.",
+        "`return sum(cellules)` suffit."
+      ],
+      "solution": "def energie_totale(cellules):\n    return sum(cellules)\n",
+      "cards": [
+        {
+          "id": "m2-0",
+          "front": "Que renvoie une fonction qui n’a pas de `return` ?",
+          "back": "`None`."
+        },
+        {
+          "id": "m2-1",
+          "front": "Comment additionner tous les nombres d’une liste ?",
+          "back": "`sum(liste)`"
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "title": "Alerte thermique",
+      "skill": "Conditions",
+      "story": "128 kWh : c’est peu, mais assez pour relancer les capteurs. Le module moteur chauffe. Il te faut un détecteur fiable avant d’aller plus loin.",
+      "task": "Écris `alerte(temp)` qui renvoie `\"OK\"` sous 60 °C, `\"CHAUD\"` de 60 à moins de 90 °C, et `\"CRITIQUE\"` à partir de 90 °C.",
+      "starter": "def alerte(temp):\n    pass\n",
+      "tests": [
+        {
+          "name": "Température normale",
+          "code": "assert alerte(20) == 'OK', 'alerte(20) devrait renvoyer \"OK\".'"
+        },
+        {
+          "name": "Pile à 60 °C",
+          "code": "assert alerte(60) == 'CHAUD', 'À 60 °C, on passe à \"CHAUD\".'"
+        },
+        {
+          "name": "Juste sous 90 °C",
+          "code": "assert alerte(89.9) == 'CHAUD', 'alerte(89.9) devrait renvoyer \"CHAUD\".'"
+        },
+        {
+          "name": "Pile à 90 °C",
+          "code": "assert alerte(90) == 'CRITIQUE', 'À 90 °C, c’est \"CRITIQUE\".'"
+        },
+        {
+          "name": "Grand froid",
+          "code": "assert alerte(-5) == 'OK', 'alerte(-5) devrait renvoyer \"OK\".'"
+        }
+      ],
+      "hints": [
+        "Enchaîne `if`, `elif` et `else`.",
+        "Commence par le cas le plus grave : `if temp >= 90:` … puis `elif temp >= 60:`.",
+        "Attention aux bornes : 60 est déjà « CHAUD », 90 est déjà « CRITIQUE »."
+      ],
+      "solution": "def alerte(temp):\n    if temp >= 90:\n        return \"CRITIQUE\"\n    elif temp >= 60:\n        return \"CHAUD\"\n    else:\n        return \"OK\"\n",
+      "cards": [
+        {
+          "id": "m3-0",
+          "front": "Différence entre `=` et `==` ?",
+          "back": "`=` range une valeur dans une variable, `==` compare deux valeurs."
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "title": "Lire le journal",
+      "skill": "Boucles et chaînes",
+      "story": "Le moteur est à 74 °C : « CHAUD », mais stable. Le journal système défile, des milliers de lignes. Combien d’erreurs se cachent dedans ?",
+      "task": "Écris `compter_erreurs(lignes)` qui compte les lignes commençant par `ERROR`. Attention : certaines lignes commencent par des espaces, et `error` en minuscules ne compte pas.",
+      "starter": "def compter_erreurs(lignes):\n    pass\n",
+      "tests": [
+        {
+          "name": "Journal mélangé",
+          "code": "assert compter_erreurs(['ERROR moteur', 'INFO radio', '  ERROR oxygène', 'WARN porte']) == 2, 'Il y a 2 erreurs dans ce journal (dont une précédée d’espaces).'"
+        },
+        {
+          "name": "Journal vide",
+          "code": "assert compter_erreurs([]) == 0, 'Un journal vide contient 0 erreur.'"
+        },
+        {
+          "name": "Minuscules",
+          "code": "assert compter_erreurs(['error minuscule', 'INFO ERROR dans le message']) == 0, 'Seules les lignes qui commencent par ERROR en majuscules comptent.'"
+        }
+      ],
+      "hints": [
+        "Parcours la liste avec `for ligne in lignes:` et garde un compteur.",
+        "`ligne.strip()` retire les espaces au début et à la fin.",
+        "`ligne.strip().startswith(\"ERROR\")` vaut `True` ou `False`."
+      ],
+      "solution": "def compter_erreurs(lignes):\n    total = 0\n    for ligne in lignes:\n        if ligne.strip().startswith(\"ERROR\"):\n            total += 1\n    return total\n",
+      "cards": [
+        {
+          "id": "m4-0",
+          "front": "Comment tester qu’un texte commence par un mot ?",
+          "back": "`texte.startswith(\"mot\")`"
+        },
+        {
+          "id": "m4-1",
+          "front": "Retirer les espaces autour d’un texte ?",
+          "back": "`texte.strip()`"
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "title": "Capteurs hors service",
+      "skill": "Dictionnaires",
+      "story": "37 erreurs. La plupart viennent de capteurs qui renvoient n’importe quoi. Un capteur est hors service quand sa valeur est absente (`None`) ou négative.",
+      "task": "Écris `capteurs_hs(mesures)` : `mesures` est un dictionnaire nom → valeur. Renvoie la liste des noms des capteurs hors service, triée par ordre alphabétique. Une valeur de 0 est normale.",
+      "starter": "def capteurs_hs(mesures):\n    pass\n",
+      "tests": [
+        {
+          "name": "Station réelle",
+          "code": "assert capteurs_hs({'o2': 21, 'co2': None, 'pression': -1, 'temp': 19}) == ['co2', 'pression'], 'Attendu : [\"co2\", \"pression\"].'"
+        },
+        {
+          "name": "Aucun capteur",
+          "code": "assert capteurs_hs({}) == [], 'Sans capteur, la liste est vide.'"
+        },
+        {
+          "name": "Zéro est valide",
+          "code": "assert capteurs_hs({'a': 0}) == [], '0 est une mesure valide.'"
+        },
+        {
+          "name": "Tri alphabétique",
+          "code": "assert capteurs_hs({'zeta': -2, 'alpha': None}) == ['alpha', 'zeta'], 'Pense à trier les noms.'"
+        }
+      ],
+      "hints": [
+        "`for nom, valeur in mesures.items():` parcourt les paires du dictionnaire.",
+        "Teste `valeur is None` avant `valeur < 0` : comparer `None` à un nombre provoque une erreur.",
+        "`sorted(liste)` renvoie une copie triée."
+      ],
+      "solution": "def capteurs_hs(mesures):\n    hs = []\n    for nom, valeur in mesures.items():\n        if valeur is None or valeur < 0:\n            hs.append(nom)\n    return sorted(hs)\n",
+      "cards": [
+        {
+          "id": "m5-0",
+          "front": "Parcourir les clés et les valeurs d’un dictionnaire ?",
+          "back": "`for cle, valeur in d.items():`"
+        },
+        {
+          "id": "m5-1",
+          "front": "Pourquoi écrire `x is None or x < 0` dans cet ordre ?",
+          "back": "Si `x` vaut `None`, Python s’arrête au premier test vrai et n’évalue pas `None < 0`, qui lèverait une erreur."
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "title": "Ordre de redémarrage",
+      "skill": "Tuples et tri",
+      "story": "Capteurs isolés. Il est temps de relancer les modules, mais pas dans n’importe quel ordre : l’oxygène avant la radio, la radio avant l’éclairage.",
+      "task": "Écris `ordre_redemarrage(modules)` : `modules` est une liste de tuples `(nom, priorite)`, priorité 1 en premier. Renvoie la liste des noms dans l’ordre de redémarrage ; à priorité égale, ordre alphabétique.",
+      "starter": "def ordre_redemarrage(modules):\n    pass\n",
+      "tests": [
+        {
+          "name": "Plan de relance",
+          "code": "assert ordre_redemarrage([('radio', 2), ('oxygene', 1), ('eclairage', 3), ('chauffage', 1)]) == ['chauffage', 'oxygene', 'radio', 'eclairage'], 'Attendu : chauffage, oxygene, radio, eclairage.'"
+        },
+        {
+          "name": "Aucun module",
+          "code": "assert ordre_redemarrage([]) == [], 'Sans module, la liste est vide.'"
+        },
+        {
+          "name": "Renvoie des noms",
+          "code": "r = ordre_redemarrage([('a', 1)])\nassert r == ['a'], f'Je veux les noms seuls, pas les tuples : reçu {r!r}.'"
+        }
+      ],
+      "hints": [
+        "`sorted(liste, key=...)` trie selon la valeur que renvoie `key` pour chaque élément.",
+        "Une clé peut être un tuple : `key=lambda m: (m[1], m[0])` trie par priorité, puis par nom.",
+        "Termine par une liste en compréhension : `[nom for nom, priorite in modules_tries]`."
+      ],
+      "solution": "def ordre_redemarrage(modules):\n    tries = sorted(modules, key=lambda m: (m[1], m[0]))\n    return [nom for nom, priorite in tries]\n",
+      "cards": [
+        {
+          "id": "m6-0",
+          "front": "Trier selon plusieurs critères ?",
+          "back": "`sorted(liste, key=lambda x: (critere1, critere2))`"
+        },
+        {
+          "id": "m6-1",
+          "front": "Que fait `[x * 2 for x in liste]` ?",
+          "back": "Une nouvelle liste avec chaque élément doublé (liste en compréhension)."
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "title": "Rapport au centre de contrôle",
+      "skill": "Synthèse",
+      "story": "Les modules redémarrent un à un. Le centre de contrôle, sur Terre, exige un rapport : quels modules ont produit des erreurs, et combien ? Le journal brut arrive sous forme d’un long texte.",
+      "task": "Écris `rapport(journal)`. Chaque ligne a la forme `HH:MM module NIVEAU message`. Renvoie un dictionnaire module → nombre de lignes de niveau `ERROR`, seulement pour les modules qui en ont. Ignore les lignes vides.",
+      "starter": "def rapport(journal):\n    pass\n",
+      "tests": [
+        {
+          "name": "Journal de la nuit",
+          "code": "j = '''03:10 moteur INFO démarrage\n03:11 moteur ERROR surchauffe\n03:11 radio ERROR pas de signal\n03:12 moteur ERROR surchauffe\n\n03:13 oxygene INFO ok'''\nassert rapport(j) == {'moteur': 2, 'radio': 1}, f'Attendu {{\"moteur\": 2, \"radio\": 1}}, reçu {rapport(j)!r}.'"
+        },
+        {
+          "name": "Journal vide",
+          "code": "assert rapport('') == {}, 'Un journal vide donne un dictionnaire vide.'"
+        },
+        {
+          "name": "Le mot ERROR dans le message ne compte pas",
+          "code": "assert rapport('03:14 radio INFO ERROR corrigée') == {}, 'Seul le niveau (3e mot) compte.'"
+        }
+      ],
+      "hints": [
+        "`journal.splitlines()` découpe le texte en lignes.",
+        "`ligne.split()` découpe une ligne en mots : le module est le 2e mot, le niveau le 3e.",
+        "`compte[module] = compte.get(module, 0) + 1` incrémente sans erreur si la clé n’existe pas encore."
+      ],
+      "solution": "def rapport(journal):\n    compte = {}\n    for ligne in journal.splitlines():\n        mots = ligne.split()\n        if len(mots) < 3:\n            continue\n        module, niveau = mots[1], mots[2]\n        if niveau == \"ERROR\":\n            compte[module] = compte.get(module, 0) + 1\n    return compte\n",
+      "cards": [
+        {
+          "id": "m7-0",
+          "front": "Découper une ligne en mots ?",
+          "back": "`ligne.split()`"
+        },
+        {
+          "id": "m7-1",
+          "front": "Lire une clé avec une valeur par défaut ?",
+          "back": "`d.get(cle, 0)`"
+        }
+      ]
+    }
+  ]
+}

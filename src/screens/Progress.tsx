@@ -8,13 +8,17 @@ import { TRACKS } from '../spaces/registry';
 import { hsk1, hsk1Chars, TRACK as ZH } from '../spaces/learn/chinese/content';
 import { TONE_INFO, type Tone } from '../spaces/learn/chinese/pinyin';
 import type { ToneStats } from '../spaces/learn/chinese/toneDrill';
+import { loadEntries, TRACK as LN } from '../spaces/learn/lingala/content';
+import { missions, TRACK as CODE } from '../spaces/learn/code/content';
 
 async function load() {
-  const [activity, cards, logs, toneRow] = await Promise.all([
+  const [activity, cards, logs, toneRow, lnEntries, codeDone] = await Promise.all([
     db.activity.toArray(),
     db.cards.toArray(),
     db.reviewLogs.where('ts').above(Date.now() - 30 * 864e5).toArray(),
     db.settings.get('zh.toneStats'),
+    loadEntries(),
+    db.lessonProgress.where('track').equals(CODE).count(),
   ]);
   const today = dayKey();
   const streak = streakInfo(new Set(activity.map((a) => a.day)), today);
@@ -44,6 +48,13 @@ async function load() {
     days: lastDays(today, 14).map((d) => ({ d, m: perDay.get(d) ?? 0 })),
     tracks,
     zh: { words: zhWords, traced, tones: (toneRow?.value ?? {}) as ToneStats },
+    ln: {
+      total: lnEntries.length,
+      verified: lnEntries.filter((e) => e.status === 'verified').length,
+      audio: lnEntries.filter((e) => e.audioCount > 0).length,
+      learned: new Set(cards.filter((c) => c.track === LN).map((c) => c.itemId)).size,
+    },
+    code: { done: codeDone, total: missions.length },
     badges: badges({
       activeDays: perDay.size,
       bestStreak: streak.best,
@@ -115,6 +126,20 @@ export function Progress() {
                 <span>rétention 30 j</span>
               </div>
             </div>
+            {t.track.id === LN && (
+              <div className="stack" style={{ gap: 8 }}>
+                <h3 style={{ margin: '8px 0 0' }}>Compétences</h3>
+                <Skill label="Expressions apprises" value={data.ln.learned / data.ln.total} detail={`${data.ln.learned} / ${data.ln.total}`} />
+                <Skill label="Contenu vérifié" value={data.ln.verified / data.ln.total} detail={`${data.ln.verified} / ${data.ln.total}`} />
+                <Skill label="Avec prononciation enregistrée" value={data.ln.audio / data.ln.total} detail={`${data.ln.audio} / ${data.ln.total}`} />
+              </div>
+            )}
+            {t.track.id === CODE && (
+              <div className="stack" style={{ gap: 8 }}>
+                <h3 style={{ margin: '8px 0 0' }}>Compétences</h3>
+                <Skill label="Chapitre 1 · Python" value={data.code.done / data.code.total} detail={`${data.code.done} / ${data.code.total} missions`} />
+              </div>
+            )}
             {t.track.id === ZH && (
               <div className="stack" style={{ gap: 8 }}>
                 <h3 style={{ margin: '8px 0 0' }}>Compétences</h3>
